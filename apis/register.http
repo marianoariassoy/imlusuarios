@@ -1,0 +1,17 @@
+### Registro de usuarios
+POST  https://imltenis.com.ar/api/users/register
+content-type: multipart/form-data
+
+{
+    "name": "Test",
+    "lastname": "User",
+    "email": "test@marianoarias.soy",
+    "password": "123456",
+    "location": "Los polvorines",
+    "day": 12,
+    "month": 12,
+    "year": 2000,
+    "phone": "2",
+    "dni": "12345678",
+    "image": ""
+}
