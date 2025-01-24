@@ -60,7 +60,7 @@ const index = () => {
   return (
     <section>
       <div className='flex flex-col gap-y-6 max-w-md m-auto lg:max-w-none'>
-        {sended && (
+        {!sended && (
           <Header
             title='¡Bienvenido! 👋'
             description='Completá con tus datos y se parte de nuestra liga.'
@@ -68,11 +68,11 @@ const index = () => {
         )}
         <div className='w-full m-auto'>
           {error && <Messages text={error} />}
-          {!sended && <Thanks />}
+          {sended && <Thanks />}
 
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className={`${!sended ? 'hidden' : 'block'}`}
+            className={`${sended ? 'hidden' : 'block'}`}
           >
             <div className='grid lg:grid-cols-2 gap-x-6'>
               <div className='form-control'>

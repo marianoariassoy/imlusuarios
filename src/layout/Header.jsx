@@ -17,7 +17,7 @@ const Header = () => {
   }, [])
 
   return (
-    <div className='navbar w-full px-5'>
+    <div className='navbar w-full px-5 bg-base-100'>
       <div className='navbar-start'>
         <Menu />
       </div>
@@ -26,7 +26,7 @@ const Header = () => {
           <Logo />
         </Link>
       </div>
-      <div className='navbar-end text-secondary'>
+      <div className='navbar-end'>
         <a
           href='https://www.instagram.com/imltenis/'
           target='_blank'
