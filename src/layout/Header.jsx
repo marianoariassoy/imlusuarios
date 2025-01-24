@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Logo } from '../components/icons'
+import { Logo, Instagram } from '../components/icons'
 import Menu from './Menu'
 
 const Header = () => {
@@ -17,7 +17,7 @@ const Header = () => {
   }, [])
 
   return (
-    <div className='navbar w-full px-5 bg-base-100'>
+    <div className='navbar w-full px-5'>
       <div className='navbar-start'>
         <Menu />
       </div>
@@ -26,7 +26,16 @@ const Header = () => {
           <Logo />
         </Link>
       </div>
-      <div className='navbar-end'></div>
+      <div className='navbar-end text-secondary'>
+        <a
+          href='https://www.instagram.com/imltenis/'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='hover:text-primary'
+        >
+          <Instagram />
+        </a>
+      </div>
     </div>
   )
 }

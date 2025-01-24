@@ -6,11 +6,9 @@ const Footer = () => {
   return (
     <div className='p-6 text-sm items-center justify-center flex flex-col text-secondary'>
       <div>
-        <span className='font-bold'>Liga de clubes IML Tenis</span>
+        <span className='font-bold'>Sistema de usuarios IML Tenis</span>
       </div>
       <div className='flex gap-x-1 items-center justify-center flex-wrap'>
-        <span>Buenos Aires, Argentina. &copy; {year}</span>
-        <span> - </span>
         <span>
           <a
             href='mailto:hola@imltenis.com.ar'

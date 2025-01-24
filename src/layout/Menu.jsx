@@ -8,7 +8,7 @@ const Menu = () => {
 
   return (
     <details className='dropdown'>
-      <summary className='btn p-0 bg-transparent border-0 text-secondary text-sm'>
+      <summary className='btn p-0 bg-transparent border-0 text-secondary text-sm hover:text-primary hover:bg-transparent'>
         <Bars />
       </summary>
       {isLoggedIn && (
