@@ -7,6 +7,7 @@ import { Input, Button } from '../../ui'
 import { texts } from '../../components/data'
 import Error from './Error'
 import Messages from './Messages'
+import Header from '../../components/Header'
 
 const index = () => {
   const [sending, setSending] = useState(false)
@@ -41,9 +42,10 @@ const index = () => {
     <section>
       <div className='flex flex-col gap-y-6'>
         {!sended ? (
-          <div className='text-center text-sm px-12 text-primary font-medium'>
-            Ingresá tu email y te enviaremos un enlace para restablecer tu contraseña 😉
-          </div>
+          <Header
+            title='Recuperar contraseña'
+            description='Ingresá tu email y te enviaremos un enlace para restablecer tu contraseña 😉'
+          />
         ) : (
           <Messages text='Se envio un enlace a tu correo para restablecer tu contraseña 👍' />
         )}
@@ -59,7 +61,7 @@ const index = () => {
               <Input
                 type='email'
                 title='Email'
-                placeholder='email'
+                placeholder='Ingrea tu email'
                 register={register('email', {
                   required: texts.required,
                   maxLength: 50,
@@ -84,7 +86,7 @@ const index = () => {
         </div>
       </div>
       <Helmet>
-        <title>IML Tenis Recupero de contraseña</title>
+        <title>IML Tenis Recuperar contraseña</title>
       </Helmet>
     </section>
   )
