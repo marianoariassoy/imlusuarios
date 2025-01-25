@@ -5,6 +5,7 @@ import Equipos from '../jugadores/Equipos'
 import Estadisticas from './Estadisticas'
 import { useAuth } from '../../context'
 import Login from './Login'
+import Header from '../../components/Header'
 
 const JugadoresContainer = () => {
   const { isLoggedIn, userData } = useAuth()
@@ -12,9 +13,7 @@ const JugadoresContainer = () => {
 
   return (
     <section className='fade-in flex flex-col gap-y-6'>
-      <div className='text-center'>
-        <h1 className='font-bold text-primary'>¡Hola {userData.name.split(' ')[0]}!</h1>
-      </div>
+      <Header title={`¡Hola ${userData.name.split(' ')[0]}!`} />
 
       <Estadisticas id={userData.id} />
       <Equipos id={userData.id} />
