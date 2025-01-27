@@ -74,7 +74,7 @@ const Integrantes = ({ id }) => {
 
   return (
     <section className='fade-in flex flex-col gap-y-6'>
-      <h1 className='text-primary text-center font-semibold'>🔥 Lista de buena fe</h1>
+      <h1 className='text-primary text-sm text-center font-semibold'>🔥 Lista de buena fe</h1>
       {error && <Messages text={error} />}
       {sended && <Messages text={sended} />}
       <div className='text-sm overflow-x-auto w-full'>

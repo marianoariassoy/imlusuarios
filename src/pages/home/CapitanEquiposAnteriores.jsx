@@ -9,7 +9,7 @@ const CapitanEquiposAnteriores = ({ id }) => {
 
   return (
     <section className='fade-in flex flex-col gap-y-3 mt-3'>
-      <h1 className='text-center font-semibold text-primary mb-3'>👉 Equipos anteriores</h1>
+      <h1 className='text-center text-sm font-semibold text-primary mb-3'>👉 Equipos anteriores</h1>
 
       <div className='flex flex-col gap-y-3 lg:items-center text-sm'>
         {data.map((item, index) => (
