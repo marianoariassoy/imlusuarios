@@ -29,7 +29,7 @@ const Players = ({ addToTeam }) => {
 
   return (
     <div className='flex flex-col gap-y-6'>
-      <h1 className='text-primary text-sm text-center font-semibold'>🚀 Agregar jugadores</h1>
+      <h1 className='text-primary text-sm text-center font-semibold'>☝️ Agregar jugadores</h1>
       <input
         type='text'
         placeholder='Buscar por nombre o apellido'

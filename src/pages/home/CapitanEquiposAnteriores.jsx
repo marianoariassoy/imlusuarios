@@ -5,7 +5,8 @@ import Item from '../../components/ItemBlank'
 const CapitanEquiposAnteriores = ({ id }) => {
   const { data, loading } = useFetch(`/captain/${id}/teams/last`)
   if (loading) return <Loader />
-  if (!data) return null
+
+  if (data) if (data.length === 0) return null
 
   return (
     <section className='fade-in flex flex-col gap-y-3 mt-3'>

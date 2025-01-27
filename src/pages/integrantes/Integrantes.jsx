@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
 import Loader from '../../components/Loader'
 import Item from '../../components/Item'
@@ -93,7 +94,7 @@ const Integrantes = ({ id }) => {
                     <tr key={item.id}>
                       <td width={100}>
                         <select
-                          className='select border-white/20'
+                          className='select text-sm border-white/10'
                           onChange={e => updatePlayer(item.id, e.target.value)}
                         >
                           {[...Array(20)].map((_, i) => (
@@ -139,12 +140,20 @@ const Integrantes = ({ id }) => {
                 <BeatLoader />
               </div>
             ) : (
-              <button
-                className='btn'
-                onClick={updateTeam}
-              >
-                Guardar lista
-              </button>
+              <div className='flex gap-x-3 justify-center'>
+                <button
+                  className='btn'
+                  onClick={updateTeam}
+                >
+                  🚀 Guardar lista
+                </button>
+                <Link
+                  className='btn'
+                  to='/'
+                >
+                  Volver
+                </Link>
+              </div>
             )}
           </div>
         </>

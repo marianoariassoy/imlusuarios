@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet'
-// import Estadisticas from './Estadisticas'
 import CapitanEquiposActuales from './CapitanEquiposActuales'
 import CapitanEquiposAnteriores from './CapitanEquiposAnteriores'
 import { useAuth } from '../../context'
@@ -13,8 +12,6 @@ const JugadoresContainer = () => {
       <Avatar data={userData} />
       <CapitanEquiposActuales id={userData.id} />
       <CapitanEquiposAnteriores id={userData.id} />
-
-      {/* <Estadisticas id={userData.id} /> */}
 
       <Helmet>
         <title>IML Tenis Capitanes</title>
