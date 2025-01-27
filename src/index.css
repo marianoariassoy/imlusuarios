@@ -43,3 +43,9 @@ table thead tr th {
 table tbody tr {
   border: 0;
 }
+
+.select {
+  min-height: 2rem !important;
+  padding-right: 1.4rem;
+  height: 2rem !important;
+}

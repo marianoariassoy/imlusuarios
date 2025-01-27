@@ -20,11 +20,6 @@ const Integrantes = ({ id }) => {
 
   if (loading) return <Loader />
 
-  if (!data)
-    return (
-      <div className='font-medium text-secondary text-center text-sm mb-4'>Este equipo aún no tiene integrantes 🥲</div>
-    )
-
   const addToTeam = player => {
     if (team.length < 19) {
       const itemExists = team.some(item => item.id === +player.id)
@@ -74,77 +69,87 @@ const Integrantes = ({ id }) => {
 
   return (
     <section className='fade-in flex flex-col gap-y-6'>
-      <h1 className='text-primary text-sm text-center font-semibold'>🔥 Lista de buena fe</h1>
-      {error && <Messages text={error} />}
-      {sended && <Messages text={sended} />}
-      <div className='text-sm overflow-x-auto w-full'>
-        <table className='table mb-3'>
-          <thead>
-            <tr>
-              <th>Posición</th>
-              <th>Nombre y Apellido</th>
-              <th>Opciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {team &&
-              team.map(item => (
-                <tr key={item.id}>
-                  <td width={100}>
-                    <select
-                      className='select border-white/20'
-                      onChange={e => updatePlayer(item.id, e.target.value)}
-                    >
-                      {[...Array(20)].map((_, i) => (
-                        <option
-                          key={i}
-                          value={i + 1}
-                          selected={item.pos === i + 1}
-                        >
-                          {i + 1}
-                        </option>
-                      ))}
-                    </select>
-                  </td>
-                  <td>
-                    <Item
-                      image={item.image}
-                      title={item.name}
-                      link=''
-                    />
-                  </td>
+      {team && !team.length > 0 && <Messages text='Este equipo aún no tiene integrantes 🥲' />}
 
-                  <td align='right'>
-                    <button onClick={() => removeFromTeam(item.id)}>
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        viewBox='0 0 512 512'
-                        fill='currentColor'
-                        className='w-4 h-4 hover:text-primary'
-                      >
-                        <path d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM184 232l144 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-144 0c-13.3 0-24-10.7-24-24s10.7-24 24-24z' />
-                      </svg>
-                    </button>
-                  </td>
+      {team && team.length > 0 && (
+        <>
+          <h1 className='text-primary text-sm text-center font-semibold'>🔥 Lista de buena fe</h1>
+
+          {error && <Messages text={error} />}
+          {sended && <Messages text={sended} />}
+
+          <div className='text-sm overflow-x-auto w-full'>
+            <table className='table mb-3'>
+              <thead>
+                <tr>
+                  <th>Posición</th>
+                  <th>Nombre y Apellido</th>
+                  <th align='right'>Opciones</th>
                 </tr>
-              ))}
-          </tbody>
-        </table>
-      </div>
-      <div className='text-center mb-3'>
-        {sending ? (
-          <div className='mt-6'>
-            <BeatLoader />
+              </thead>
+              <tbody>
+                {team &&
+                  team.map(item => (
+                    <tr key={item.id}>
+                      <td width={100}>
+                        <select
+                          className='select border-white/20'
+                          onChange={e => updatePlayer(item.id, e.target.value)}
+                        >
+                          {[...Array(20)].map((_, i) => (
+                            <option
+                              key={i}
+                              value={i + 1}
+                              selected={item.pos === i + 1}
+                            >
+                              {i + 1}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
+                      <td>
+                        <Item
+                          image={item.image}
+                          title={item.name}
+                          link=''
+                        />
+                      </td>
+
+                      <td align='right'>
+                        <button onClick={() => removeFromTeam(item.id)}>
+                          <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            viewBox='0 0 512 512'
+                            fill='currentColor'
+                            className='w-4 h-4 hover:text-primary'
+                          >
+                            <path d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM184 232l144 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-144 0c-13.3 0-24-10.7-24-24s10.7-24 24-24z' />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
           </div>
-        ) : (
-          <button
-            className='btn'
-            onClick={updateTeam}
-          >
-            Guardar lista
-          </button>
-        )}
-      </div>
+
+          <div className='text-center mb-3'>
+            {sending ? (
+              <div className='mt-6'>
+                <BeatLoader />
+              </div>
+            ) : (
+              <button
+                className='btn'
+                onClick={updateTeam}
+              >
+                Guardar lista
+              </button>
+            )}
+          </div>
+        </>
+      )}
+
       <Players addToTeam={addToTeam} />
     </section>
   )
