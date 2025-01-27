@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Logo, Instagram } from '../components/icons'
+import { Logo } from '../components/icons'
 import Menu from './Menu'
+import Exit from './Exit'
 
 const Header = () => {
   useEffect(() => {
@@ -27,14 +28,7 @@ const Header = () => {
         </Link>
       </div>
       <div className='navbar-end'>
-        <a
-          href='https://www.instagram.com/imltenis/'
-          target='_blank'
-          rel='noopener noreferrer'
-          className='hover:text-primary'
-        >
-          <Instagram />
-        </a>
+        <Exit />
       </div>
     </div>
   )

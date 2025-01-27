@@ -1,37 +1,49 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Layout from './layout/Layout'
-import UsersLogin from './pages/users/Login'
-import UsersRegistro from './pages/users/Registro'
-import UsersPerfil from './pages/users/Perfil'
-import UsersRecuperar from './pages/users/RecuperarPassword'
-import UsersRestablecer from './pages/users/RestablecerPassword'
+import Login from './pages/login'
+import Registro from './pages/registro'
+import Home from './pages/home'
+import Integrantes from './pages/integrantes'
+import RecuperarPassword from './pages/recuperar-password'
 import PageNotFound from './pages/PageNotFound'
+import { useAuth } from './context'
 
 const App = () => {
+  const { isLoggedIn } = useAuth()
+
   return (
     <BrowserRouter>
       <Layout>
         <Routes>
+          {isLoggedIn ? (
+            <Route
+              path='/'
+              element={<Home />}
+            />
+          ) : (
+            <Route
+              path='/'
+              element={<Login />}
+            />
+          )}
+
           <Route
-            path='/'
-            element={<UsersLogin />}
+            path='/login'
+            element={<Login />}
           />
           <Route
             path='/registro'
-            element={<UsersRegistro />}
+            element={<Registro />}
           />
           <Route
-            path='/perfil'
-            element={<UsersPerfil />}
+            path='/integrantes/:id'
+            element={<Integrantes />}
           />
           <Route
             path='/recuperar-password'
-            element={<UsersRecuperar />}
+            element={<RecuperarPassword />}
           />
-          <Route
-            path='/restablecer-password'
-            element={<UsersRestablecer />}
-          />
+
           <Route
             path='*'
             element={<PageNotFound />}

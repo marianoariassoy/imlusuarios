@@ -1,24 +1,23 @@
-// import { NavLink } from 'react-router-dom'
-// import { menu } from '../components/data'
 import { useAuth } from '../context'
-import { Bars } from '../components/icons'
+import { Link, useLocation } from 'react-router-dom'
 
 const Menu = () => {
-  const { logout, isLoggedIn } = useAuth()
+  const { isLoggedIn } = useAuth()
+  const { pathname } = useLocation()
 
   return (
-    <details className='dropdown'>
-      <summary className='btn p-0 bg-transparent border-0 text-secondary text-sm hover:text-primary hover:bg-transparent'>
-        <Bars />
-      </summary>
-      {isLoggedIn && (
-        <ul className='menu dropdown-content bg-base-200 rounded-box z-[1] w-52 p-2 shadow'>
-          <li>
-            <button onClick={logout}>Salir</button>
-          </li>
-        </ul>
-      )}
-    </details>
+    isLoggedIn && (
+      <Link
+        to='/'
+        className={
+          pathname === '/'
+            ? 'text-xs font-semibold text-primary'
+            : 'text-xs font-semibold text-secondary hover:text-primary'
+        }
+      >
+        INICIO
+      </Link>
+    )
   )
 }
 

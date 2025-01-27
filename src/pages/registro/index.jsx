@@ -5,9 +5,9 @@ import { Helmet } from 'react-helmet'
 import axios from 'axios'
 import { Input, Button, Select } from '../../ui'
 import { texts, days, months, years } from '../../components/data'
-import Thanks from './Thanks'
-import Error from './Error'
-import Messages from './Messages'
+import Gracias from './Gracias'
+import Error from '../../components/Error'
+import Messages from '../../components/Messages'
 import Header from '../../components/Header'
 
 const index = () => {
@@ -68,7 +68,7 @@ const index = () => {
         )}
         <div className='w-full m-auto'>
           {error && <Messages text={error} />}
-          {sended && <Thanks />}
+          {sended && <Gracias />}
 
           <form
             onSubmit={handleSubmit(onSubmit)}

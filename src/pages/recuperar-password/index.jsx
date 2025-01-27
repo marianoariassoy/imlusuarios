@@ -5,8 +5,8 @@ import { BeatLoader } from 'react-spinners'
 import { Helmet } from 'react-helmet'
 import { Input, Button } from '../../ui'
 import { texts } from '../../components/data'
-import Error from './Error'
-import Messages from './Messages'
+import Error from '../../components/Error'
+import Messages from '../../components/Messages'
 import Header from '../../components/Header'
 
 const index = () => {

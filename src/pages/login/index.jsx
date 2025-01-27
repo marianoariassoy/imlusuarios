@@ -1,14 +1,14 @@
 import { useState } from 'react'
+import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import axios from 'axios'
 import { BeatLoader } from 'react-spinners'
 import { Input, Button } from '../../ui'
 import { texts } from '../../components/data'
 import { useAuth } from '../../context'
-import Error from './Error'
-import Messages from './Messages'
+import Error from '../../components/Error'
+import Messages from '../../components/Messages'
 import Header from '../../components/Header'
 
 const index = () => {
@@ -30,7 +30,7 @@ const index = () => {
       if (response.data.success) {
         const token = response.data.token
         login(token)
-        navigate('/perfil')
+        navigate('/')
       } else {
         setError(response.data.message)
         setSending(false)
@@ -44,7 +44,10 @@ const index = () => {
   return (
     <section>
       <div className='flex flex-col gap-y-6'>
-        <Header title='¡Hola! 👋' />
+        <Header
+          title='¡Hola Capitán! 👋'
+          description='Ingresa tus datos para acceder a tu cuenta'
+        />
 
         <div className='w-full max-w-md m-auto'>
           {error && <Messages text={error} />}
