@@ -77,7 +77,7 @@ const Integrantes = ({ id }) => {
       <h1 className='text-primary text-center font-semibold'>🔥 Lista de buena fe</h1>
       {error && <Messages text={error} />}
       {sended && <Messages text={sended} />}
-      <div className='text-sm w-full'>
+      <div className='text-sm overflow-x-auto w-full'>
         <table className='table mb-3'>
           <thead>
             <tr>
