@@ -69,7 +69,7 @@ const Integrantes = ({ id }) => {
   }
 
   return (
-    <section className='fade-in flex flex-col gap-y-6'>
+    <section className='fade-in flex flex-col gap-y-3'>
       {team && !team.length > 0 && <Messages text='Este equipo aún no tiene integrantes 🥲' />}
 
       {team && team.length > 0 && (

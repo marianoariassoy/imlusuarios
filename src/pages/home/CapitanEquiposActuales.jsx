@@ -11,8 +11,14 @@ const CapitanEquiposAnteriores = ({ id }) => {
   if (data) if (data.length === 0) return <Messages text='No tenes equipos capitaneados en la actual temporada 🥲' />
 
   return (
-    <section className='fade-in flex flex-col gap-y-6'>
-      <h1 className='text-sm font-semibold text-primary'>Equipos actuales</h1>
+    <section className='fade-in flex flex-col gap-y-3 bg-base-200 p-4'>
+      <div className=''>
+        <h1 className='text-sm font-semibold text-primary'>Equipos capitaneados</h1>
+        <p className='text-secondary text-sm'>
+          Los siguientes equipos estan bajo tu conducción durante la temporada actual.
+        </p>
+      </div>
+
       <div className='flex flex-col gap-y-3 text-sm'>
         {data.map((item, index) => (
           <div

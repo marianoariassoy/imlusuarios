@@ -9,8 +9,11 @@ const CapitanEquiposAnteriores = ({ id }) => {
   if (data) if (data.length === 0) return null
 
   return (
-    <section className='fade-in flex flex-col gap-y-6 mt-6'>
-      <h1 className='text-sm font-semibold text-primary'>Equipos anteriores</h1>
+    <section className='fade-in flex flex-col gap-y-6 bg-base-200 p-4'>
+      <div>
+        <h1 className='text-sm font-semibold text-primary'>Equipos capitaneados anteriores</h1>
+        <p className='text-secondary text-sm'>Los siguientes equipos pertenecen a temporadas pasadas.</p>
+      </div>
       <div className='flex flex-col gap-y-3 text-sm'>
         {data.map((item, index) => (
           <div

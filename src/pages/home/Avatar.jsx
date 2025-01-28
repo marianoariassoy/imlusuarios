@@ -12,7 +12,7 @@ const Avatar = ({ data }) => {
         </div>
       </div>
       <div className='text-center'>
-        <h1 className='font-bold text-base text-primary'>{data.name}</h1>
+        <h1 className='font-bold text-base text-primary'>¡Hola {data.name}!</h1>
         <h2 className='text-xl'>🙂</h2>
       </div>
     </header>
