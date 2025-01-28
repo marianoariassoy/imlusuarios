@@ -27,12 +27,12 @@ const TitleRow = ({ image, title, link }) => {
       {link ? (
         <Link
           to={link}
-          className='hover:text-primary font-medium'
+          className='hover:text-primary font-medium whitespace-pre-wrap'
         >
           {title}
         </Link>
       ) : (
-        <div>{title}</div>
+        <div className='whitespace-pre-wrap'>{title}</div>
       )}
     </div>
   )
