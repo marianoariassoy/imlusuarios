@@ -92,7 +92,7 @@ const Integrantes = ({ id }) => {
                 {team &&
                   team.map(item => (
                     <tr key={item.id}>
-                      <td width={100}>
+                      <td width={50}>
                         <select
                           className='select text-sm border-white/10'
                           onChange={e => updatePlayer(item.id, e.target.value)}
