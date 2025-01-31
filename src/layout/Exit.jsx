@@ -6,10 +6,11 @@ const Exit = () => {
   return (
     isLoggedIn && (
       <button
-        className='text-xs font-semibold text-secondary hover:text-primary'
+        className='text-xl'
         onClick={logout}
+        title='Cerrar sesión'
       >
-        SALIR
+        🚀
       </button>
     )
   )

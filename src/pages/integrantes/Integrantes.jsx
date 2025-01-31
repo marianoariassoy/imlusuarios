@@ -14,26 +14,35 @@ const Integrantes = ({ id }) => {
   const [error, setError] = useState(null)
   const { data, loading } = useFetch(`/users/teams/${id}/players`)
   const [team, setTeam] = useState([])
+  const [amount, setAmount] = useState(0)
 
   useEffect(() => {
-    setTeam(data)
+    if (data) {
+      setTeam(data)
+      setAmount(data.length)
+    }
   }, [data])
+
+  useEffect(() => {
+    setAmount(team.length)
+  }, [team])
 
   if (loading) return <Loader />
 
   const addToTeam = player => {
-    if (team.length < 19) {
+    if (team.length < 20) {
       const itemExists = team.some(item => item.id === +player.id)
 
       if (!itemExists) {
         setError(null)
         setSended(null)
         setTeam([...team, { ...player, pos: 1 }])
+        setAmount(team.length)
       } else {
-        setError('Este jugador ya pertenece al equipo ⚠️')
+        setError('Este jugador ya pertenece al equipo 💪')
       }
     } else {
-      setError('LLegaste al máximo de integrantes de este equipo ⚠️')
+      setError('LLegaste al máximo de integrantes 🔥')
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -58,6 +67,10 @@ const Integrantes = ({ id }) => {
         setSending(false)
         setError(null)
         setTeam(team.sort((a, b) => a.pos - b.pos))
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        })
       } else {
         setError(response.data.message)
         setSending(false)
@@ -69,12 +82,18 @@ const Integrantes = ({ id }) => {
   }
 
   return (
-    <section className='fade-in flex flex-col gap-y-3'>
-      {team && !team.length > 0 && <Messages text='Este equipo aún no tiene integrantes 🥲' />}
+    <section className='fade-in flex flex-col gap-y-4'>
+      {team && !team.length > 0 && <Messages text='El equipo aún no tiene integrantes 🥲' />}
 
       {team && team.length > 0 && (
         <>
-          <h1 className='text-primary text-sm text-center font-semibold'>🔥 Lista de buena fe</h1>
+          <div>
+            <h1 className='text-primary text-sm text-center font-semibold'>🔥 Lista de buena fe</h1>
+            <p className='text-sm'>
+              La lista debe estar ordenada según el nivel actual de cada jugador, siendo el primero el de mejor nievel y
+              el último el de nivel más bajo.
+            </p>
+          </div>
 
           {error && <Messages text={error} />}
           {sended && <Messages text={sended} />}
@@ -134,6 +153,8 @@ const Integrantes = ({ id }) => {
             </table>
           </div>
 
+          <div className='text-sm text-secondary mb-4 text-center'>Cantidad de jugadores: {amount}</div>
+
           <div className='text-center mb-3'>
             {sending ? (
               <div className='mt-6'>
@@ -149,7 +170,7 @@ const Integrantes = ({ id }) => {
                 </button>
                 <Link
                   className='btn'
-                  to='/'
+                  to='/home'
                 >
                   Volver
                 </Link>

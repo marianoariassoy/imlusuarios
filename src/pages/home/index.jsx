@@ -1,15 +1,22 @@
 import { Helmet } from 'react-helmet'
+import { Navigate } from 'react-router-dom'
 import CapitanEquiposActuales from './CapitanEquiposActuales'
 import CapitanEquiposAnteriores from './CapitanEquiposAnteriores'
 import { useAuth } from '../../context'
-import Avatar from './Avatar'
+import Header from '../../components/Header'
 
 const JugadoresContainer = () => {
-  const { userData } = useAuth()
+  const { userData, isLoggedIn } = useAuth()
+
+  if (!isLoggedIn) return <Navigate to='/' />
 
   return (
     <section className='fade-in flex flex-col gap-y-6'>
-      <Avatar data={userData} />
+      <Header
+        title='¡Hola Capitán! 👋'
+        description='Acá podes ver tus equipos actuales y anteriores'
+      />
+
       <CapitanEquiposActuales id={userData.id} />
       <CapitanEquiposAnteriores id={userData.id} />
 

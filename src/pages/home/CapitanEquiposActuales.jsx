@@ -7,17 +7,11 @@ import Messages from '../../components/Messages'
 const CapitanEquiposAnteriores = ({ id }) => {
   const { data, loading } = useFetch(`/captain/${id}/teams/actual`)
   if (loading) return <Loader />
-
-  if (data) if (data.length === 0) return <Messages text='No tenes equipos capitaneados en la actual temporada 🥲' />
+  if (!data) return <Messages text='No tenes equipos capitaneados en la actual temporada 🥲' />
 
   return (
-    <section className='fade-in flex flex-col gap-y-3 bg-base-200 p-5 rounded-lg shadow-lg'>
-      <div className=''>
-        <h1 className='text-sm font-semibold text-primary'>Equipos actuales</h1>
-        <p className='text-secondary text-sm'>
-          Los siguientes equipos estan bajo tu conducción como capitán durante la temporada actual.
-        </p>
-      </div>
+    <section className='fade-in flex flex-col gap-y-4 bg-base-200 p-5 rounded-lg shadow-lg'>
+      <h1 className='text-sm font-semibold text-primary'>Equipos actuales</h1>
 
       <div className='flex flex-col gap-y-3 text-sm'>
         {data.map((item, index) => (

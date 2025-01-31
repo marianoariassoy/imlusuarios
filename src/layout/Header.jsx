@@ -23,7 +23,7 @@ const Header = () => {
         <Menu />
       </div>
       <div className='navbar-center text-primary logo-main transition-all'>
-        <Link to='/'>
+        <Link to='/home'>
           <Logo />
         </Link>
       </div>

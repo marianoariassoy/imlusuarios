@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { Bull } from './icons'
 
 const ImageComponent = ({ src, alt }) => {
   const [isLoading, setIsLoading] = useState(true)
@@ -13,16 +12,14 @@ const ImageComponent = ({ src, alt }) => {
   }, [src])
 
   return isLoading ? (
-    <div className='h-full w-full flex items-center justify-center'>
-      <div className='pulse'>
-        <Bull />
-      </div>
+    <div className='h-full w-full'>
+      <div className='h-full w-full bg-black/30 animate-pulse'></div>
     </div>
   ) : (
     <img
       src={src}
       alt={alt}
-      className='h-full w-full object-cover object-center'
+      className='h-full w-full object-cover object-center fade-in'
     />
   )
 }

@@ -30,7 +30,7 @@ const index = () => {
       if (response.data.success) {
         const token = response.data.token
         login(token)
-        navigate('/')
+        navigate('/home')
       } else {
         setError(response.data.message)
         setSending(false)
@@ -84,7 +84,7 @@ const index = () => {
             <div className='mt-2'>
               <Link
                 to='/recuperar-password'
-                className='hover:text-primary text-secondary text-sm'
+                className='hover:text-primary text-sm'
               >
                 ¿Olvidaste tu contraseña?
               </Link>
@@ -101,12 +101,14 @@ const index = () => {
           </form>
         </div>
         <div className='text-center'>
-          <Link
-            to='/registro'
+          <a
+            href='https://imltenis.com.ar/usuarios/bienvenido'
             className='hover:text-primary text-secondary text-sm'
+            target='_blank'
+            rel='noopener noreferrer'
           >
             👉 Si no estas registrado hacé clic acá
-          </Link>
+          </a>
         </div>
       </div>
       <Helmet>

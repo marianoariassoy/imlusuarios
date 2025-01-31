@@ -1,23 +1,21 @@
+import { Link } from 'react-router-dom'
 import { useAuth } from '../context'
-import { Link, useLocation } from 'react-router-dom'
+import Image from '../components/Image'
 
 const Menu = () => {
-  const { isLoggedIn } = useAuth()
-  const { pathname } = useLocation()
+  const { isLoggedIn, userData } = useAuth()
+
+  if (!isLoggedIn) return null
 
   return (
-    isLoggedIn && (
-      <Link
-        to='/'
-        className={
-          pathname === '/'
-            ? 'text-xs font-semibold text-primary'
-            : 'text-xs font-semibold text-secondary hover:text-primary'
-        }
-      >
-        INICIO
-      </Link>
-    )
+    <Link to='/home'>
+      <div className='w-10 h-10 rounded-full overflow-hidden'>
+        <Image
+          src={userData.image}
+          alt={userData.name}
+        />
+      </div>
+    </Link>
   )
 }
 
