@@ -1,11 +1,12 @@
-const Select = ({ options, register, title, selected }) => {
+const Select = ({ options, register, title }) => {
   return (
     <select
-      className='select select-bordered w-full max-w-xs border-primary'
+      className='select select-bordered w-full'
       {...register}
     >
       <option
         disabled
+        selected
         value=''
       >
         {title}
@@ -14,10 +15,9 @@ const Select = ({ options, register, title, selected }) => {
         return (
           <option
             key={index}
-            value={item}
-            selected={selected == item}
+            value={item.id}
           >
-            {item}
+            {item.name}
           </option>
         )
       })}

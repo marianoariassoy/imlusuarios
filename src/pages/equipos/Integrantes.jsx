@@ -8,13 +8,14 @@ import axios from 'axios'
 import { BeatLoader } from 'react-spinners'
 import Messages from '../../components/Messages'
 
-const Integrantes = ({ id }) => {
+const Integrantes = ({ id_captain, id_team, id_season }) => {
   const [sending, setSending] = useState(false)
   const [sended, setSended] = useState(false)
   const [error, setError] = useState(null)
-  const { data, loading } = useFetch(`/users/teams/${id}/players`)
+  const { data, loading } = useFetch(`/captain/${id_captain}/teams/${id_team}/players`)
   const [team, setTeam] = useState([])
   const [amount, setAmount] = useState(0)
+  const actual_season = 5
 
   useEffect(() => {
     if (data) {
@@ -61,7 +62,7 @@ const Integrantes = ({ id }) => {
   const updateTeam = async () => {
     setSending(true)
     try {
-      const response = await axios.post(`https://imltenis.com.ar/api/users/update-team/${id}`, team)
+      const response = await axios.post(`https://imltenis.com.ar/api/captain/update-team/${id_team}`, team)
       if (response.data.success) {
         setSended(response.data.message)
         setSending(false)
@@ -90,8 +91,8 @@ const Integrantes = ({ id }) => {
           <div>
             <h1 className='text-primary text-sm text-center font-semibold'>🔥 Lista de buena fe</h1>
             <p className='text-sm'>
-              La lista debe estar ordenada según el nivel actual de cada jugador, siendo el primero el de mejor nievel y
-              el último el de nivel más bajo.
+              La lista debe estar ordenada de acuerdo con el nivel actual de cada jugador, colocando primero al de mayor
+              nivel y último al de menor nivel.
             </p>
           </div>
 
@@ -155,32 +156,34 @@ const Integrantes = ({ id }) => {
 
           <div className='text-sm text-secondary mb-4 text-center'>Cantidad de jugadores: {amount}</div>
 
-          <div className='text-center mb-3'>
-            {sending ? (
-              <div className='mt-6'>
-                <BeatLoader />
-              </div>
-            ) : (
-              <div className='flex gap-x-3 justify-center'>
-                <button
-                  className='btn'
-                  onClick={updateTeam}
-                >
-                  🚀 Guardar lista
-                </button>
-                <Link
-                  className='btn'
-                  to='/home'
-                >
-                  Volver
-                </Link>
-              </div>
-            )}
-          </div>
+          {id_season === actual_season && (
+            <div className='text-center mb-3'>
+              {sending ? (
+                <div className='mt-6'>
+                  <BeatLoader />
+                </div>
+              ) : (
+                <div className='flex gap-x-3 justify-center'>
+                  <button
+                    className='btn'
+                    onClick={updateTeam}
+                  >
+                    🚀 Guardar lista
+                  </button>
+                  <Link
+                    className='btn'
+                    to='/home'
+                  >
+                    Volver
+                  </Link>
+                </div>
+              )}
+            </div>
+          )}
         </>
       )}
 
-      <Players addToTeam={addToTeam} />
+      {id_season === actual_season && <Players addToTeam={addToTeam} />}
     </section>
   )
 }

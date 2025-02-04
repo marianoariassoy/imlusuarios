@@ -18,7 +18,7 @@ const Header = () => {
   }, [])
 
   return (
-    <div className='navbar w-full px-3 bg-base-100'>
+    <div className='navbar w-full px-3 bg-base-100/80 backdrop-blur'>
       <div className='navbar-start'>
         <Menu />
       </div>

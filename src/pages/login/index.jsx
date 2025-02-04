@@ -45,7 +45,7 @@ const index = () => {
     <section>
       <div className='flex flex-col gap-y-6'>
         <Header
-          title='¡Hola Capitán! 👋'
+          title='¡Hola! 👋'
           description='Ingresa tus datos para acceder a tu cuenta'
         />
 
@@ -102,7 +102,7 @@ const index = () => {
         </div>
         <div className='text-center'>
           <a
-            href='https://imltenis.com.ar/usuarios/bienvenido'
+            href='https://imltenis.com.ar/bienvenido'
             className='hover:text-primary text-secondary text-sm'
             target='_blank'
             rel='noopener noreferrer'

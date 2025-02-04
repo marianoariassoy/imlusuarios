@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 const ImageComponent = ({ src, alt }) => {
   const [isLoading, setIsLoading] = useState(true)
 
+  if (!src) return <div className='h-full w-full bg-white/10'></div>
+
   useEffect(() => {
     const image = new Image()
     image.src = src
@@ -13,7 +15,7 @@ const ImageComponent = ({ src, alt }) => {
 
   return isLoading ? (
     <div className='h-full w-full'>
-      <div className='h-full w-full bg-black/30 animate-pulse'></div>
+      <div className='h-full w-full bg-white/10 animate-pulse'></div>
     </div>
   ) : (
     <img
