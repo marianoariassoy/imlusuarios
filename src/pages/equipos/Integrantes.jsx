@@ -168,7 +168,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                     className='btn'
                     onClick={updateTeam}
                   >
-                    ❤️ Guardar lista
+                    Guardar equipo
                   </button>
                   <Link
                     className='btn'

@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
 import Loader from '../../components/Loader'
-import Item from '../../components/Item'
+import Item from '../../components/ItemSmall'
 import Messages from '../../components/Messages'
+import Aviso from '../../components/Aviso'
 
 const CaptainEquipoActuales = ({ id }) => {
   const navigate = useNavigate()
@@ -21,22 +22,30 @@ const CaptainEquipoActuales = ({ id }) => {
     navigate(`/equipos/${id}`)
   }
   return (
-    <section className='fade-in flex flex-col gap-y-3 bg-base-200 p-4 rounded-lg shadow-lg'>
-      <h1 className='text-sm font-medium text-primary'>Equipos</h1>
+    <section className='fade-in flex flex-col gap-y-3'>
+      <Aviso
+        emoji='👉'
+        text='También verás tus equipos de la temporada actual. Podrás modificar las listas de buena fe 
+          hasta el 9 de marzo.'
+      />
 
-      <div className='flex flex-col gap-y-3 text-sm'>
-        {dataFiltered.map((item, index) => (
-          <div
-            key={index}
-            className='py-2 hover:bg-base-100 cursor-pointer'
-            onClick={() => handleClick(item.id)}
-          >
-            <Item
-              title={item.name + ' ' + item.tournament_name}
-              image={item.image}
-            />
-          </div>
-        ))}
+      <div className='flex flex-col gap-y-3 bg-base-200 p-4 rounded-lg shadow-lg'>
+        <h1 className='text-sm font-medium text-primary'>Equipos</h1>
+
+        <div className='flex flex-col gap-y-3 text-sm'>
+          {dataFiltered.map((item, index) => (
+            <div
+              key={index}
+              className='py-2 hover:bg-base-100 cursor-pointer'
+              onClick={() => handleClick(item.id)}
+            >
+              <Item
+                title={item.name + ' ' + item.tournament_name}
+                image={item.image}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )

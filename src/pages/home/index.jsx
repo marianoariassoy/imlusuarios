@@ -5,7 +5,6 @@ import EquiposActuales from './EquiposActuales'
 import { useAuth } from '../../context'
 import Header from '../../components/Header'
 import SeriesPorCargar from './SeriesPorCargar'
-import Aviso from '../../components/Aviso'
 
 const JugadoresContainer = () => {
   const { userData, isLoggedIn } = useAuth()
@@ -18,19 +17,7 @@ const JugadoresContainer = () => {
         emoji='🙂'
       />
 
-      <Aviso
-        emoji='👉'
-        text='A continuación podrás ver tus próximas series y, en caso de que tu equipo resulte ganador, deberás cargar los
-          resultados correspondientes'
-      />
-
       <SeriesPorCargar id={userData.id} />
-
-      <Aviso
-        emoji='👉'
-        text='También verás tus equipos de la temporada actual. Podrás modificar las listas de buena fe 
-          hasta el 9 de marzo.'
-      />
 
       <EquiposActuales id={userData.id} />
       {/* <EquiposAnteriores id={userData.id} /> */}

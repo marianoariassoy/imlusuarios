@@ -25,7 +25,7 @@ const index = () => {
         description={data.tournament_name}
       />
 
-      <div className='flex gap-x-4'>
+      <header className='flex gap-x-4 w-full max-w-xs m-auto items-center'>
         <div className='flex flex-1 flex-col gap-y-2 items-center'>
           <div className='rounded-full overflow-hidden w-20'>
             <Image
@@ -38,6 +38,7 @@ const index = () => {
             <span className='text-secondary'>Local</span>
           </div>
         </div>
+        <div className='text-xl'>⚡</div>
         <div className='flex flex-1  flex-col gap-y-2 items-center'>
           <div className='rounded-full overflow-hidden w-20'>
             <Image
@@ -50,7 +51,7 @@ const index = () => {
             <span className='text-secondary'>Visitante</span>
           </div>
         </div>
-      </div>
+      </header>
 
       {loadingMatches ? (
         <Loader />

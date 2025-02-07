@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import Item from '../../components/Item'
+import Item from '../../components/ItemSmall'
 
 const Fixture = ({ data }) => {
   const navigate = useNavigate()

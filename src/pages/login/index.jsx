@@ -5,17 +5,18 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { BeatLoader } from 'react-spinners'
 import { Input, Button } from '../../ui'
-import { texts } from '../../components/data'
+import { texts } from '../../lib/data'
 import { useAuth } from '../../context'
 import Validation from '../../components/Validation'
 import Header from '../../components/Header'
 import toast, { Toaster } from 'react-hot-toast'
 
 const index = () => {
-  const { login } = useAuth()
+  const { login, isLoggedIn } = useAuth()
   const [sending, setSending] = useState(false)
   const [error, setError] = useState(null)
   const navigate = useNavigate()
+  if (isLoggedIn) navigate('/home')
 
   const {
     register,
@@ -44,7 +45,7 @@ const index = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error, { position: 'top-right', className: 'text-sm bg-base-300 text-white', duration: 4000 })
+      toast.error(error, { position: 'bottom-right', className: 'text-sm bg-base-300 text-white', duration: 4000 })
     }
   }, [error])
 

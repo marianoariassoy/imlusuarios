@@ -1,6 +1,6 @@
 import useFetch from '../../hooks/useFetch'
 import Loader from '../../components/Loader'
-import Item from '../../components/Item'
+import Item from '../../components/ItemSmall'
 
 const CapitanEquiposAnteriores = ({ id }) => {
   const { data, loading } = useFetch(`/captain/${id}/teams`)
