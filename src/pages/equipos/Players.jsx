@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import useFetch from '../../hooks/useFetch'
 import Loader from '../../components/Loader'
-import Item from '../../components/ItemBlank'
+import Item from '../../components/ItemSmall'
 
 const Players = ({ addToTeam }) => {
   const { data, loading } = useFetch(`/players`)
@@ -47,7 +47,6 @@ const Players = ({ addToTeam }) => {
                   <Item
                     image={item.image}
                     title={item.name}
-                    link={`https://imltenis.com.ar/jugadores/${item.id}`}
                   />
                 </td>
                 <td align='right'>

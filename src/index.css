@@ -12,10 +12,6 @@
   text-decoration: underline;
   text-decoration-thickness: 2px;
 }
-svg {
-  fill: currentColor;
-  stroke: currentColor;
-}
 input::placeholder {
   color: inherit;
 }

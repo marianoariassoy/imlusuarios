@@ -1,5 +1,5 @@
-import Item from '../../components/Item'
 import { useNavigate } from 'react-router-dom'
+import Item from '../../components/Item'
 
 const Fixture = ({ data }) => {
   const navigate = useNavigate()

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
@@ -7,9 +7,9 @@ import { BeatLoader } from 'react-spinners'
 import { Input, Button } from '../../ui'
 import { texts } from '../../components/data'
 import { useAuth } from '../../context'
-import Error from '../../components/Error'
-import Messages from '../../components/Messages'
+import Validation from '../../components/Validation'
 import Header from '../../components/Header'
+import toast, { Toaster } from 'react-hot-toast'
 
 const index = () => {
   const { login } = useAuth()
@@ -24,6 +24,7 @@ const index = () => {
   } = useForm()
 
   const onSubmit = async data => {
+    setError(false)
     setSending(true)
     try {
       const response = await axios.post('https://imltenis.com.ar/api/users/login', data)
@@ -41,6 +42,12 @@ const index = () => {
     }
   }
 
+  useEffect(() => {
+    if (error) {
+      toast.error(error, { position: 'top-right', className: 'text-sm bg-base-300 text-white', duration: 4000 })
+    }
+  }, [error])
+
   return (
     <section>
       <div className='flex flex-col gap-y-6'>
@@ -50,8 +57,6 @@ const index = () => {
         />
 
         <div className='w-full max-w-md m-auto'>
-          {error && <Messages text={error} />}
-
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className='form-control'>
               <Input
@@ -67,7 +72,7 @@ const index = () => {
                   }
                 })}
               />
-              {errors.email && <Error text={errors.email.message} />}
+              {errors.email && <Validation text={errors.email.message} />}
             </div>
             <div className='form-control'>
               <Input
@@ -79,7 +84,7 @@ const index = () => {
                   validate: value => value.length > 4 || 'La longitud debe ser mayor a 4 caracteres'
                 })}
               />
-              {errors.password && <Error text={errors.password.message} />}
+              {errors.password && <Validation text={errors.password.message} />}
             </div>
             <div className='mt-2'>
               <Link
@@ -114,6 +119,7 @@ const index = () => {
       <Helmet>
         <title>IML Tenis Login</title>
       </Helmet>
+      <Toaster />
     </section>
   )
 }

@@ -1,13 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { BeatLoader } from 'react-spinners'
 import { Helmet } from 'react-helmet'
 import { Input, Button } from '../../ui'
 import { texts } from '../../components/data'
-import Error from '../../components/Error'
+import Validation from '../../components/Validation'
 import Messages from '../../components/Messages'
 import Header from '../../components/Header'
+import toast, { Toaster } from 'react-hot-toast'
 
 const index = () => {
   const [sending, setSending] = useState(false)
@@ -19,6 +20,12 @@ const index = () => {
     handleSubmit,
     formState: { errors }
   } = useForm()
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error, { position: 'top-right', className: 'text-sm', duration: 4000 })
+    }
+  }, [error])
 
   const onSubmit = async data => {
     setSending(true)
@@ -51,7 +58,7 @@ const index = () => {
         )}
 
         <div className='w-full max-w-md m-auto'>
-          {error && <Messages text={error} />}
+          {error && <MessagesError text={error} />}
 
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -71,7 +78,7 @@ const index = () => {
                   }
                 })}
               />
-              {errors.email && <Error text={errors.email.message} />}
+              {errors.email && <Validation text={errors.email.message} />}
             </div>
             <div className='form-control mt-6 flex items-center justify-center'>
               {sending ? (
@@ -88,6 +95,7 @@ const index = () => {
       <Helmet>
         <title>IML Tenis Recuperar contraseña</title>
       </Helmet>
+      <Toaster />
     </section>
   )
 }

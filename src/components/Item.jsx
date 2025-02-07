@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import Image from './Image'
 
-const TitleRow = ({ image, title, link }) => {
+const TitleRow = ({ image, title, link = '' }) => {
   return (
     <div className='flex items-center gap-x-3'>
       <div className='avatar'>
-        <div className='w-10 rounded-full'>
+        <div className='w-12 rounded-full'>
           {link ? (
             <Link
               to={link}

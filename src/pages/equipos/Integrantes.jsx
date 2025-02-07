@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
 import Loader from '../../components/Loader'
-import Item from '../../components/Item'
+import Item from '../../components/ItemSmall'
 import Players from './Players'
 import axios from 'axios'
 import { BeatLoader } from 'react-spinners'
 import Messages from '../../components/Messages'
+import toast, { Toaster } from 'react-hot-toast'
+import Aviso from '../../components/Aviso'
 
 const Integrantes = ({ id_captain, id_team, id_season }) => {
   const [sending, setSending] = useState(false)
@@ -14,19 +16,25 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
   const [error, setError] = useState(null)
   const { data, loading } = useFetch(`/captain/${id_captain}/teams/${id_team}/players`)
   const [team, setTeam] = useState([])
-  const [amount, setAmount] = useState(0)
   const actual_season = 5
 
   useEffect(() => {
     if (data) {
       setTeam(data)
-      setAmount(data.length)
     }
   }, [data])
 
   useEffect(() => {
-    setAmount(team.length)
-  }, [team])
+    if (error) {
+      toast.error(error, { position: 'bottom-right', className: 'text-sm bg-base-300 text-white', duration: 4000 })
+    }
+  }, [error])
+
+  useEffect(() => {
+    if (sended) {
+      toast.success(sended, { position: 'bottom-right', className: 'text-sm bg-base-300 text-white', duration: 4000 })
+    }
+  }, [sended])
 
   if (loading) return <Loader />
 
@@ -38,7 +46,6 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
         setError(null)
         setSended(null)
         setTeam([...team, { ...player, pos: 1 }])
-        setAmount(team.length)
       } else {
         setError('Este jugador ya pertenece al equipo 💪')
       }
@@ -61,6 +68,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
 
   const updateTeam = async () => {
     setSending(true)
+    setSended(null)
     try {
       const response = await axios.post(`https://imltenis.com.ar/api/captain/update-team/${id_team}`, team)
       if (response.data.success) {
@@ -68,10 +76,6 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
         setSending(false)
         setError(null)
         setTeam(team.sort((a, b) => a.pos - b.pos))
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        })
       } else {
         setError(response.data.message)
         setSending(false)
@@ -90,14 +94,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
         <>
           <div>
             <h1 className='text-primary text-sm text-center font-semibold'>🔥 Lista de buena fe</h1>
-            <p className='text-sm'>
-              La lista debe estar ordenada de acuerdo con el nivel actual de cada jugador, colocando primero al de mayor
-              nivel y último al de menor nivel.
-            </p>
           </div>
-
-          {error && <Messages text={error} />}
-          {sended && <Messages text={sended} />}
 
           <div className='text-sm overflow-x-auto w-full'>
             <table className='table mb-3'>
@@ -114,7 +111,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                     <tr key={item.id}>
                       <td width={50}>
                         <select
-                          className='select text-sm border-white/10'
+                          className='select select-sm text-sm border-white/10'
                           onChange={e => updatePlayer(item.id, e.target.value)}
                         >
                           {[...Array(20)].map((_, i) => (
@@ -132,7 +129,6 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                         <Item
                           image={item.image}
                           title={item.name}
-                          link=''
                         />
                       </td>
 
@@ -154,10 +150,14 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
             </table>
           </div>
 
-          <div className='text-sm text-secondary mb-4 text-center'>Cantidad de jugadores: {amount}</div>
+          <Aviso
+            text='La lista debe estar ordenada de acuerdo con el nivel actual de cada jugador, colocando primero al de
+            mayor nivel y último al de menor nivel.'
+            emoji='⚠️'
+          />
 
           {id_season === actual_season && (
-            <div className='text-center mb-3'>
+            <div className='text-center mb-3 mt-3'>
               {sending ? (
                 <div className='mt-6'>
                   <BeatLoader />
@@ -168,13 +168,13 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                     className='btn'
                     onClick={updateTeam}
                   >
-                    🚀 Guardar lista
+                    ❤️ Guardar lista
                   </button>
                   <Link
                     className='btn'
                     to='/home'
                   >
-                    Volver
+                    👈 Volver
                   </Link>
                 </div>
               )}
@@ -184,6 +184,8 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
       )}
 
       {id_season === actual_season && <Players addToTeam={addToTeam} />}
+
+      <Toaster />
     </section>
   )
 }

@@ -1,19 +1,32 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { Input, Button, Select } from '../../ui'
-
-import Error from '../../components/Error'
+import Validation from '../../components/Validation'
 import { texts } from '../../components/data'
 import useFetch from '../../hooks/useFetch'
 import { BeatLoader } from 'react-spinners'
-import Messages from '../../components/Messages'
+import toast, { Toaster } from 'react-hot-toast'
+import Aviso from '../../components/Aviso'
 
 const Serie = ({ serie, match }) => {
   const [sending, setSending] = useState(false)
+  const [sended, setSended] = useState(false)
   const [error, setError] = useState(null)
   const { data: playersHome, loading: loadingPlayersHome } = useFetch(`/teams/${serie.home_id}/players`)
   const { data: playersAway, loading: loadingPlayersAway } = useFetch(`/teams/${serie.away_id}/players`)
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error, { position: 'bottom-right', className: 'text-sm bg-base-300 text-white', duration: 4000 })
+    }
+  }, [error])
+
+  useEffect(() => {
+    if (sended) {
+      toast.success(sended, { position: 'bottom-right', className: 'text-sm bg-base-300 text-white', duration: 4000 })
+    }
+  }, [sended])
 
   const {
     register,
@@ -22,28 +35,28 @@ const Serie = ({ serie, match }) => {
   } = useForm()
 
   const onSubmit = async data => {
-    console.log(data)
-    // setSending(true)
-    // try {
-    //   const response = await axios.post('https://imltenis.com.ar/api/users/login', data)
-    //   if (response.data.success) {
-    //     const token = response.data.token
-    //     login(token)
-    //     navigate('/home')
-    //   } else {
-    //     setError(response.data.message)
-    //     setSending(false)
-    //   }
-    // } catch (error) {
-    //   setError(error)
-    //   setSending(false)
-    // }
+    setSending(true)
+    setSended(null)
+    const URL = `https://imltenis.com.ar/api/series/${serie.id}/scores/${match.id}/update`
+    try {
+      const response = await axios.post(URL, data)
+      if (response.data.success) {
+        setSended(response.data.message)
+        setSending(false)
+      } else {
+        setError(response.data.message)
+        setSending(false)
+      }
+    } catch (error) {
+      setError(error)
+      setSending(false)
+    }
   }
 
   const double = match.type_id === 1 || match.type_id === 2
 
   return (
-    <div>
+    <div className={sended ? 'opacity-50' : ''}>
       <h2 className='text-primary font-semibold text-center mb-3'>{match.type}</h2>
 
       <form
@@ -67,7 +80,7 @@ const Serie = ({ serie, match }) => {
                   pattern: { value: /^\d+$/, message: 'Solo se permiten números' }
                 })}
               />
-              {errors.set1_home && <Error text={errors.set1_home.message} />}
+              {errors.set1_home && <Validation text={errors.set1_home.message} />}
             </div>
             <div className='form-control'>
               <Input
@@ -81,7 +94,7 @@ const Serie = ({ serie, match }) => {
                   pattern: { value: /^\d+$/, message: 'Solo se permiten números' }
                 })}
               />
-              {errors.set2_home && <Error text={errors.set2_home.message} />}
+              {errors.set2_home && <Validation text={errors.set2_home.message} />}
             </div>
             <div className='form-control'>
               <Input
@@ -94,7 +107,7 @@ const Serie = ({ serie, match }) => {
                   pattern: { value: /^\d+$/, message: 'Solo se permiten números' }
                 })}
               />
-              {errors.set3_home && <Error text={errors.set3_home.message} />}
+              {errors.set3_home && <Validation text={errors.set3_home.message} />}
             </div>
           </div>
           <div className='flex-1'>
@@ -110,7 +123,7 @@ const Serie = ({ serie, match }) => {
                   pattern: { value: /^\d+$/, message: 'Solo se permiten números' }
                 })}
               />
-              {errors.set1_away && <Error text={errors.set1_away.message} />}
+              {errors.set1_away && <Validation text={errors.set1_away.message} />}
             </div>
             <div className='form-control'>
               <Input
@@ -124,7 +137,7 @@ const Serie = ({ serie, match }) => {
                   pattern: { value: /^\d+$/, message: 'Solo se permiten números' }
                 })}
               />
-              {errors.set2_away && <Error text={errors.set2_away.message} />}
+              {errors.set2_away && <Validation text={errors.set2_away.message} />}
             </div>
             <div className='form-control'>
               <Input
@@ -137,7 +150,7 @@ const Serie = ({ serie, match }) => {
                   pattern: { value: /^\d+$/, message: 'Solo se permiten números' }
                 })}
               />
-              {errors.set3_away && <Error text={errors.set3_away.message} />}
+              {errors.set3_away && <Validation text={errors.set3_away.message} />}
             </div>
           </div>
         </div>
@@ -163,7 +176,7 @@ const Serie = ({ serie, match }) => {
                       register={register('player1_home', { required: texts.required })}
                       title='Selecioná'
                     />
-                    {errors.player1_home && <Error text={errors.player1_home.message} />}
+                    {errors.player1_home && <Validation text={errors.player1_home.message} />}
                   </>
                 )
               )}
@@ -180,7 +193,7 @@ const Serie = ({ serie, match }) => {
                         register={register('player2_home', { required: texts.required })}
                         title='Selecioná'
                       />
-                      {errors.player2_home && <Error text={errors.player2_home.message} />}
+                      {errors.player2_home && <Validation text={errors.player2_home.message} />}
                     </>
                   )
                 )}
@@ -204,7 +217,7 @@ const Serie = ({ serie, match }) => {
                       register={register('player1_away', { required: texts.required })}
                       title='Selecioná'
                     />
-                    {errors.player1_away && <Error text={errors.player1_away.message} />}
+                    {errors.player1_away && <Validation text={errors.player1_away.message} />}
                   </>
                 )
               )}
@@ -221,7 +234,7 @@ const Serie = ({ serie, match }) => {
                         register={register('player2_away', { required: texts.required })}
                         title='Selecioná'
                       />
-                      {errors.player2_away && <Error text={errors.player2_away.message} />}
+                      {errors.player2_away && <Validation text={errors.player2_away.message} />}
                     </>
                   )
                 )}
@@ -238,30 +251,35 @@ const Serie = ({ serie, match }) => {
               className='select select-bordered w-full'
             >
               <option
-                value='Finalizado'
+                value='1'
                 selected
               >
                 🔥 Finalizado
               </option>
-              <option value='W.O.'>🥲 W.O.</option>
+              <option value='2'>🥲 W.O.</option>
             </select>
           </div>
         </div>
 
-        <div className='flex justify-center'>
-          {sending ? (
-            <div className='mt-6'>
-              <BeatLoader />
-            </div>
-          ) : (
-            <Button>Guardar</Button>
-          )}
-        </div>
+        {!sended ? (
+          <div className='flex justify-center'>
+            {sending ? (
+              <div className='mt-6'>
+                <BeatLoader />
+              </div>
+            ) : (
+              <Button>Confirmar punto</Button>
+            )}
+          </div>
+        ) : null}
 
-        <div className='text-secondary text-sm text-center'>
-          <p>⚠️ El punto solo lo podrás guardar una vez, en caso de error, contactate con tu coordinador. </p>
-        </div>
+        <Aviso
+          text='El punto solo lo podrás confirmar una vez, en caso de error, contactate con tu coordinador.'
+          emoji='⚠️'
+        />
       </form>
+
+      <Toaster />
     </div>
   )
 }
