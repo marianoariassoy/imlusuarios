@@ -2,7 +2,7 @@ const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
-    <div className='p-6 text-sm items-center justify-center flex flex-col text-secondary mt-6'>
+    <footer className='p-6 text-sm items-center justify-center flex flex-col text-secondary mt-6'>
       <div>
         <span className='font-bold'>IML Tenis Capitanes</span>
       </div>
@@ -20,7 +20,7 @@ const Footer = () => {
         <span> - </span>
         <span>Hecho con ❤︎ en {year}</span>
       </div>
-    </div>
+    </footer>
   )
 }
 

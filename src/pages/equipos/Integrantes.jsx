@@ -26,7 +26,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error, { position: 'bottom-right', className: 'text-sm bg-base-300 text-white', duration: 4000 })
+      toast.error(error, { position: 'bottom-right', className: 'text-sm bg-primary text-white', duration: 4000 })
     }
   }, [error])
 

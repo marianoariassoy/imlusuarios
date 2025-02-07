@@ -7,7 +7,6 @@ import Exit from './Exit'
 const Header = () => {
   useEffect(() => {
     const logo = document.querySelector('.logo-main')
-
     window.onscroll = () => {
       if (window.scrollY > 0) {
         logo.classList.add('text-xs')
@@ -18,7 +17,7 @@ const Header = () => {
   }, [])
 
   return (
-    <div className='navbar w-full px-3 bg-base-100/80 backdrop-blur'>
+    <header className='sticky top-0 z-40 mb-3 navbar w-full px-4 bg-base-100/80 backdrop-blur'>
       <div className='navbar-start'>
         <Menu />
       </div>
@@ -30,7 +29,7 @@ const Header = () => {
       <div className='navbar-end'>
         <Exit />
       </div>
-    </div>
+    </header>
   )
 }
 

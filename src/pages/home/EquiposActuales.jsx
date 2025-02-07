@@ -23,14 +23,8 @@ const CaptainEquipoActuales = ({ id }) => {
   }
   return (
     <section className='fade-in flex flex-col gap-y-3'>
-      <Aviso
-        emoji='👉'
-        text='También verás tus equipos de la temporada actual. Podrás modificar las listas de buena fe 
-          hasta el 9 de marzo.'
-      />
-
       <div className='flex flex-col gap-y-3 bg-base-200 p-4 rounded-lg shadow-lg'>
-        <h1 className='text-sm font-medium text-primary'>Equipos</h1>
+        <h1 className='text-sm font-medium text-primary'>Tus equipos</h1>
 
         <div className='flex flex-col gap-y-3 text-sm'>
           {dataFiltered.map((item, index) => (
@@ -47,6 +41,11 @@ const CaptainEquipoActuales = ({ id }) => {
           ))}
         </div>
       </div>
+
+      <Aviso
+        emoji=''
+        text='Podes modificar las listas de buena fe hasta el 9 de marzo.'
+      />
     </section>
   )
 }

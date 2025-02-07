@@ -15,6 +15,7 @@ const index = () => {
   const { login, isLoggedIn } = useAuth()
   const [sending, setSending] = useState(false)
   const [error, setError] = useState(null)
+  const [showPassword, setShowPassword] = useState(false)
   const navigate = useNavigate()
   if (isLoggedIn) navigate('/home')
 
@@ -45,9 +46,13 @@ const index = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error, { position: 'bottom-right', className: 'text-sm bg-base-300 text-white', duration: 4000 })
+      toast.error(error, { position: 'bottom-right', className: 'text-sm bg-primary text-white', duration: 4000 })
     }
   }, [error])
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(prevState => !prevState)
+  }
 
   return (
     <section>
@@ -75,9 +80,16 @@ const index = () => {
               />
               {errors.email && <Validation text={errors.email.message} />}
             </div>
-            <div className='form-control'>
+            <div className='form-control relative'>
+              <button
+                type='button'
+                onClick={togglePasswordVisibility}
+                className='absolute top-2 right-0 flex items-center'
+              >
+                {showPassword ? '🙈' : '👁️'}
+              </button>
               <Input
-                type='password'
+                type={showPassword ? 'text' : 'password'}
                 title='Contraseña'
                 placeholder='Ingresa tu contraseña'
                 register={register('password', {
@@ -101,7 +113,7 @@ const index = () => {
                   <BeatLoader />
                 </div>
               ) : (
-                <Button>Ingresar</Button>
+                <Button>Iniciar sesión</Button>
               )}
             </div>
           </form>

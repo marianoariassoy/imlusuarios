@@ -13,12 +13,13 @@ const Serie = ({ serie, match }) => {
   const [sending, setSending] = useState(false)
   const [sended, setSended] = useState(false)
   const [error, setError] = useState(null)
+  const [showPlayers, setShowPlayers] = useState(true)
   const { data: playersHome, loading: loadingPlayersHome } = useFetch(`/teams/${serie.home_id}/players`)
   const { data: playersAway, loading: loadingPlayersAway } = useFetch(`/teams/${serie.away_id}/players`)
 
   useEffect(() => {
     if (error) {
-      toast.error(error, { position: 'bottom-right', className: 'text-sm bg-base-300 text-white', duration: 4000 })
+      toast.error(error, { position: 'bottom-right', className: 'text-sm bg-primary text-white', duration: 4000 })
     }
   }, [error])
 
@@ -155,34 +156,18 @@ const Serie = ({ serie, match }) => {
           </div>
         </div>
 
-        <div
-          className='flex gap-x-4'
-          id='jugadores'
-        >
-          <div className='flex-1'>
-            <div className='form-control'>
-              <label className='label'>
-                <span className='label-text font-medium'>
-                  {double ? 'Jugadores' : 'Jugador'} {serie.home_name}
-                </span>
-              </label>
-              {loadingPlayersHome ? (
-                <BeatLoader />
-              ) : (
-                playersHome && (
-                  <>
-                    <Select
-                      options={playersHome}
-                      register={register('player1_home', { required: texts.required })}
-                      title='Selecioná'
-                    />
-                    {errors.player1_home && <Validation text={errors.player1_home.message} />}
-                  </>
-                )
-              )}
-            </div>
-            {double ? (
-              <div className='form-control mt-3'>
+        {showPlayers && (
+          <div
+            className='flex gap-x-4'
+            id='jugadores'
+          >
+            <div className='flex-1'>
+              <div className='form-control'>
+                <label className='label'>
+                  <span className='label-text font-medium'>
+                    {double ? 'Jugadores' : 'Jugador'} {serie.home_name}
+                  </span>
+                </label>
                 {loadingPlayersHome ? (
                   <BeatLoader />
                 ) : (
@@ -190,58 +175,76 @@ const Serie = ({ serie, match }) => {
                     <>
                       <Select
                         options={playersHome}
-                        register={register('player2_home', { required: texts.required })}
+                        register={register('player1_home', { required: texts.required })}
                         title='Selecioná'
                       />
-                      {errors.player2_home && <Validation text={errors.player2_home.message} />}
+                      {errors.player1_home && <Validation text={errors.player1_home.message} />}
                     </>
                   )
                 )}
               </div>
-            ) : null}
-          </div>
-          <div className='flex-1'>
-            <div className='form-control'>
-              <label className='label'>
-                <span className='label-text font-medium'>
-                  {double ? 'Jugadores' : 'Jugador'} {serie.away_name}
-                </span>
-              </label>
-              {loadingPlayersAway ? (
-                <BeatLoader />
-              ) : (
-                playersAway && (
-                  <>
-                    <Select
-                      options={playersAway}
-                      register={register('player1_away', { required: texts.required })}
-                      title='Selecioná'
-                    />
-                    {errors.player1_away && <Validation text={errors.player1_away.message} />}
-                  </>
-                )
-              )}
+              {double ? (
+                <div className='form-control mt-3'>
+                  {loadingPlayersHome ? (
+                    <BeatLoader />
+                  ) : (
+                    playersHome && (
+                      <>
+                        <Select
+                          options={playersHome}
+                          register={register('player2_home', { required: texts.required })}
+                          title='Selecioná'
+                        />
+                        {errors.player2_home && <Validation text={errors.player2_home.message} />}
+                      </>
+                    )
+                  )}
+                </div>
+              ) : null}
             </div>
-            {double ? (
-              <div className='form-control mt-3'>
-                {loadingPlayersHome ? (
+            <div className='flex-1'>
+              <div className='form-control'>
+                <label className='label'>
+                  <span className='label-text font-medium'>
+                    {double ? 'Jugadores' : 'Jugador'} {serie.away_name}
+                  </span>
+                </label>
+                {loadingPlayersAway ? (
                   <BeatLoader />
                 ) : (
                   playersAway && (
                     <>
                       <Select
                         options={playersAway}
-                        register={register('player2_away', { required: texts.required })}
+                        register={register('player1_away', { required: texts.required })}
                         title='Selecioná'
                       />
-                      {errors.player2_away && <Validation text={errors.player2_away.message} />}
+                      {errors.player1_away && <Validation text={errors.player1_away.message} />}
                     </>
                   )
                 )}
               </div>
-            ) : null}
+              {double ? (
+                <div className='form-control mt-3'>
+                  {loadingPlayersHome ? (
+                    <BeatLoader />
+                  ) : (
+                    playersAway && (
+                      <>
+                        <Select
+                          options={playersAway}
+                          register={register('player2_away', { required: texts.required })}
+                          title='Selecioná'
+                        />
+                        {errors.player2_away && <Validation text={errors.player2_away.message} />}
+                      </>
+                    )
+                  )}
+                </div>
+              ) : null}
+            </div>
           </div>
-        </div>
+        )}
 
         <div className='flex justify-between items-center gap-x-4'>
           <div className='flex-1 text-sm'>Estado del punto:</div>
@@ -249,6 +252,7 @@ const Serie = ({ serie, match }) => {
             <select
               {...register('status')}
               className='select select-bordered w-full'
+              onChange={e => setShowPlayers(e.target.value === '1' ? true : false)}
             >
               <option
                 value='1'
