@@ -86,7 +86,7 @@ const index = () => {
                 onClick={togglePasswordVisibility}
                 className='absolute top-2 right-0 flex items-center'
               >
-                {showPassword ? '🙈' : '👁️'}
+                {showPassword ? '👁️' : '🙈'}
               </button>
               <Input
                 type={showPassword ? 'text' : 'password'}
@@ -130,7 +130,7 @@ const index = () => {
         </div>
       </div>
       <Helmet>
-        <title>IML Tenis Login</title>
+        <title>IML Tenis Capitanes Inicio de sesión</title>
       </Helmet>
       <Toaster />
     </section>
