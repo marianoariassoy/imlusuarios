@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import { BeatLoader } from 'react-spinners'
 import { Input, Button } from '../../ui'
 import { texts } from '../../lib/data'
@@ -129,9 +128,7 @@ const index = () => {
           </a>
         </div>
       </div>
-      <Helmet>
-        <title>IML Tenis Capitanes Inicio de sesión</title>
-      </Helmet>
+
       <Toaster />
     </section>
   )

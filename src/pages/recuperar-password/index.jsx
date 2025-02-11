@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { BeatLoader } from 'react-spinners'
-import { Helmet } from 'react-helmet'
 import { Input, Button } from '../../ui'
 import { texts } from '../../lib/data'
 import Validation from '../../components/Validation'
@@ -92,9 +91,7 @@ const index = () => {
           </form>
         </div>
       </div>
-      <Helmet>
-        <title>IML Tenis Recuperar contraseña</title>
-      </Helmet>
+
       <Toaster />
     </section>
   )

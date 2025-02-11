@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet'
 import { Navigate } from 'react-router-dom'
 import EquiposActuales from './EquiposActuales'
 // import EquiposAnteriores from './EquiposAnteriores'
@@ -26,9 +25,6 @@ const JugadoresContainer = () => {
 
       <EquiposActuales id={userData.id} />
       {/* <EquiposAnteriores id={userData.id} /> */}
-      <Helmet>
-        <title>IML Tenis Capitanes</title>
-      </Helmet>
     </section>
   )
 }

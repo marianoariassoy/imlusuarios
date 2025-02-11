@@ -6,7 +6,6 @@ import Messages from '../../components/Messages'
 import Header from '../../components/Header'
 import Image from '../../components/Image'
 import Serie from './Serie'
-import Aviso from '../../components/Aviso'
 import URL from './URL'
 
 const index = () => {

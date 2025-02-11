@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Logo } from '../components/icons'
+import { Logo } from '../lib/icons'
 import Menu from './Menu'
 import Exit from './Exit'
 
