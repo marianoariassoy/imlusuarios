@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { Logo } from '../lib/icons'
 import Menu from './Menu'
 import Exit from './Exit'
@@ -22,9 +21,7 @@ const Header = () => {
         <Menu />
       </div>
       <div className='navbar-center text-primary logo-main transition-all'>
-        <Link to='/home'>
-          <Logo />
-        </Link>
+        <Logo />
       </div>
       <div className='navbar-end'>
         <Exit />

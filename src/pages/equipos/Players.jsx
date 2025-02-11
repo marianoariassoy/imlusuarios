@@ -14,20 +14,24 @@ const Players = ({ addToTeam }) => {
       .replace(/[\u0300-\u036f]/g, '')
       .toLowerCase()
 
+  useEffect(() => {
+    setPlayers(data)
+  }, [data])
+
   if (loading) return <Loader />
 
-  const handleFilterChange = e => {
-    const value = e.target.value
-    setQuery(value)
-    const normalizedQuery = removeAccents(value)
-    const filteredData = query ? data.filter(player => removeAccents(player.name).includes(normalizedQuery)) : []
-    setPlayers(filteredData)
+  const handleFilterChange = event => {
+    setQuery(event.target.value)
   }
 
   const addPlayer = player => {
     addToTeam(player)
     setPlayers(players.filter(item => item.id !== player.id))
   }
+
+  const filteredPlayers = query
+    ? players.filter(player => removeAccents(player.name).includes(removeAccents(query)))
+    : []
 
   return (
     <div className='flex flex-col gap-y-6 mt-3'>
@@ -43,29 +47,28 @@ const Players = ({ addToTeam }) => {
       <div className='overflow-x-auto text-sm'>
         <table className='table w-full rounded-none mb-3'>
           <tbody>
-            {players.length > 0 &&
-              players.map(item => (
-                <tr key={item.id}>
-                  <td>
-                    <Item
-                      image={item.image}
-                      title={item.name}
-                    />
-                  </td>
-                  <td align='right'>
-                    <button onClick={() => addPlayer(item)}>
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        viewBox='0 0 512 512'
-                        fill='currentColor'
-                        className='w-4 h-4 hover:text-primary'
-                      >
-                        <path d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z' />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-              ))}
+            {filteredPlayers.map(item => (
+              <tr key={item.id}>
+                <td>
+                  <Item
+                    image={item.image}
+                    title={item.name}
+                  />
+                </td>
+                <td align='right'>
+                  <button onClick={() => addPlayer(item)}>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      viewBox='0 0 512 512'
+                      fill='currentColor'
+                      className='w-4 h-4 hover:text-primary'
+                    >
+                      <path d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z' />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
