@@ -57,7 +57,7 @@ const index = () => {
     <section>
       <div className='flex flex-col gap-y-6'>
         <Header
-          title='¡Hola! 👋'
+          title='¡Hola Capi! 👋'
           description='Ingresa tus datos para acceder a tu cuenta'
         />
 
