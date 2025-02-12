@@ -17,8 +17,8 @@ const JugadoresContainer = () => {
       />
 
       <div className='text-sm'>
-        👋 Bienvenido a tu nuevo panel de control para capitanes de IML Tenis. Desde acá podrás ver tus equipos y series
-        para gestionar.
+        👋 Bienvenido a tu nuevo panel de control para capitanes de IML Tenis. <br />
+        Desde acá podrás ver tus series y equipos para gestionar.
       </div>
 
       <SeriesPorCargar id={userData.id} />
