@@ -22,7 +22,7 @@ const index = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error, { position: 'top-right', className: 'text-sm', duration: 4000 })
+      toast.error(error, { position: 'bottom-right', className: 'text-sm bg-primary text-white', duration: 4000 })
     }
   }, [error])
 
@@ -57,8 +57,6 @@ const index = () => {
         )}
 
         <div className='w-full max-w-md m-auto'>
-          {error && <MessagesError text={error} />}
-
           <form
             onSubmit={handleSubmit(onSubmit)}
             className={sended ? 'hidden' : ''}
