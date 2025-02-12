@@ -22,7 +22,6 @@ const JugadoresContainer = () => {
       </div>
 
       <SeriesPorCargar id={userData.id} />
-
       <EquiposActuales id={userData.id} />
       {/* <EquiposAnteriores id={userData.id} /> */}
     </section>
