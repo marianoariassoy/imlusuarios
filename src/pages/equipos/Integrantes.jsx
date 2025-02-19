@@ -1,28 +1,26 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import useFetch from '../../hooks/useFetch'
+import { ReactSortable } from 'react-sortablejs'
+import axios from 'axios'
+import toast, { Toaster } from 'react-hot-toast'
+import { BeatLoader } from 'react-spinners'
 import Loader from '../../components/Loader'
 import Item from '../../components/ItemSmall'
 import Players from './Players'
-import axios from 'axios'
-import { BeatLoader } from 'react-spinners'
 import Messages from '../../components/Messages'
-import toast, { Toaster } from 'react-hot-toast'
 import Aviso from '../../components/Aviso'
 
 const Integrantes = ({ id_captain, id_team, id_season }) => {
+  const [team, setTeam] = useState([])
+  const [loading, setLoading] = useState(false)
   const [sending, setSending] = useState(false)
   const [sended, setSended] = useState(false)
   const [error, setError] = useState(null)
-  const { data, loading } = useFetch(`/captain/${id_captain}/teams/${id_team}/players`)
-  const [team, setTeam] = useState([])
   const actual_season = 5
 
   useEffect(() => {
-    if (data) {
-      setTeam(data)
-    }
-  }, [data])
+    getPlayers()
+  }, [])
 
   useEffect(() => {
     if (error) {
@@ -35,6 +33,19 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
       toast.success(sended, { position: 'bottom-right', className: 'text-sm bg-base-300 text-white', duration: 4000 })
     }
   }, [sended])
+
+  const getPlayers = async () => {
+    try {
+      setLoading(true)
+      const response = await axios.get(`https://imltenis.com.ar/api/captain/${id_captain}/teams/${id_team}/players`)
+      if (response.data) {
+        setTeam(response.data)
+        setLoading(false)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   if (loading) return <Loader />
 
@@ -62,10 +73,6 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
     setTeam(team.filter(item => item.id !== id))
   }
 
-  const updatePlayer = (id, pos) => {
-    setTeam(team.map(player => (player.id == id ? { ...player, pos } : player)))
-  }
-
   const updateTeam = async () => {
     setSending(true)
     setSended(null)
@@ -75,7 +82,6 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
         setSended(response.data.message)
         setSending(false)
         setError(null)
-        setTeam(team.sort((a, b) => a.pos - b.pos))
       } else {
         setError(response.data.message)
         setSending(false)
@@ -87,43 +93,40 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
   }
 
   return (
-    <section className='fade-in flex flex-col gap-y-4'>
+    <section className='fade-in flex flex-col gap-y-4 max-w-2xl mx-auto'>
       {team && !team.length > 0 && <Messages text='El equipo todavia no tiene integrantes 🥲' />}
 
       {team && team.length > 0 && (
         <>
           <div>
-            <h1 className='text-primary text-sm text-center font-semibold'>🔥 Lista de buena fe</h1>
+            <h1 className='text-primary text-sm text-center'>
+              🔥 <span className='font-semibold'>Lista de buena fe</span> ({team.length} jugadores)
+            </h1>
           </div>
 
           <div className='text-sm overflow-x-auto w-full'>
             <table className='table mb-3'>
               <thead>
                 <tr>
-                  <th>Posición</th>
-                  <th>Nombre y Apellido</th>
-                  <th align='right'>Opciones</th>
+                  <th className='w-10'>Pos.</th>
+                  <th>Nombre y apellido</th>
+                  <th></th>
                 </tr>
               </thead>
-              <tbody>
+
+              <ReactSortable
+                list={team}
+                setList={setTeam}
+                tag='tbody'
+              >
                 {team &&
-                  team.map(item => (
-                    <tr key={item.id}>
-                      <td width={50}>
-                        <select
-                          className='select select-sm text-sm border-white/10'
-                          onChange={e => updatePlayer(item.id, e.target.value)}
-                        >
-                          {[...Array(20)].map((_, i) => (
-                            <option
-                              key={i}
-                              value={i + 1}
-                              selected={item.pos === i + 1}
-                            >
-                              {i + 1}
-                            </option>
-                          ))}
-                        </select>
+                  team.map((item, index) => (
+                    <tr
+                      key={item.id}
+                      className='w-full cursor-grab'
+                    >
+                      <td>
+                        <span className='font-medium'>{index + 1}</span>
                       </td>
                       <td>
                         <Item
@@ -131,7 +134,6 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                           title={item.name}
                         />
                       </td>
-
                       <td align='right'>
                         <button onClick={() => removeFromTeam(item.id)}>
                           <svg
@@ -146,7 +148,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                       </td>
                     </tr>
                   ))}
-              </tbody>
+              </ReactSortable>
             </table>
           </div>
 

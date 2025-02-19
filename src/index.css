@@ -15,7 +15,6 @@
 input::placeholder {
   color: inherit;
 }
-
 table thead tr {
   border: none;
 }
@@ -28,7 +27,6 @@ table thead tr th {
 table tbody tr {
   border: 0;
 }
-
 .fade-in {
   animation: fadeIn 0.3s ease forwards;
 }
@@ -39,4 +37,8 @@ table tbody tr {
   100% {
     opacity: 1;
   }
+}
+
+.sortable-chosen {
+  background-color: rgba(255, 255, 255, 0.1);
 }
