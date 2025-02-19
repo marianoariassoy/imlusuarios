@@ -118,6 +118,9 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                 list={team}
                 setList={setTeam}
                 tag='tbody'
+                animation={200}
+                delayOnTouchStart={true}
+                delay={2}
               >
                 {team &&
                   team.map((item, index) => (
