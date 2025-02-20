@@ -5,7 +5,7 @@ import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast'
 import { BeatLoader } from 'react-spinners'
 import Loader from '../../components/Loader'
-import Item from '../../components/ItemSmall'
+import Item from '../../components/Item'
 import Players from './Players'
 import Messages from '../../components/Messages'
 import Aviso from '../../components/Aviso'
@@ -103,7 +103,6 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
               🔥 <span className='font-semibold'>Lista de buena fe</span> ({team.length} jugadores)
             </h1>
           </div>
-
           <div className='text-sm overflow-x-auto w-full'>
             <table className='table mb-3'>
               <thead>
@@ -113,45 +112,43 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                   <th></th>
                 </tr>
               </thead>
-
               <ReactSortable
                 list={team}
                 setList={setTeam}
                 tag='tbody'
                 animation={200}
-                delayOnTouchStart={true}
-                delay={10}
-                pressDelay={100}
+                delayOnTouchStart={false}
+                delay={5}
+                easing='ease-out'
               >
-                {team &&
-                  team.map((item, index) => (
-                    <tr
-                      key={item.id}
-                      className='w-full cursor-grab'
-                    >
-                      <td>
-                        <span className='font-medium'>{index + 1}</span>
-                      </td>
-                      <td>
-                        <Item
-                          image={item.image}
-                          title={item.name}
-                        />
-                      </td>
-                      <td align='right'>
-                        <button onClick={() => removeFromTeam(item.id)}>
-                          <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            viewBox='0 0 512 512'
-                            fill='currentColor'
-                            className='w-4 h-4 hover:text-primary'
-                          >
-                            <path d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM184 232l144 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-144 0c-13.3 0-24-10.7-24-24s10.7-24 24-24z' />
-                          </svg>
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
+                {team.map((item, index) => (
+                  <tr
+                    key={item.id}
+                    className='w-full cursor-grab '
+                  >
+                    <td>
+                      <span className='font-medium'>{index + 1}</span>
+                    </td>
+                    <td>
+                      <Item
+                        image={item.image}
+                        title={item.name}
+                      />
+                    </td>
+                    <td align='right'>
+                      <button onClick={() => removeFromTeam(item.id)}>
+                        <svg
+                          xmlns='http://www.w3.org/2000/svg'
+                          viewBox='0 0 512 512'
+                          fill='currentColor'
+                          className='w-4 h-4 hover:text-primary'
+                        >
+                          <path d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM184 232l144 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-144 0c-13.3 0-24-10.7-24-24s10.7-24 24-24z' />
+                        </svg>
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               </ReactSortable>
             </table>
           </div>
