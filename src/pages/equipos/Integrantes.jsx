@@ -161,7 +161,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
           </div>
 
           <Aviso
-            text='Mantene presionado el icono de la derecha de cada jugador para arrastrarlo a la posición deseada.'
+            text='Mantene presionado el icono de la izquierda de cada jugador para arrastrarlo a la posición deseada.'
             emoji='👉'
           />
           <Aviso
