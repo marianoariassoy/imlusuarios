@@ -154,9 +154,13 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
           </div>
 
           <Aviso
+            text='Mantene presionado un jugador para arrastralo a la posición deseada.'
+            emoji='✋'
+          />
+          <Aviso
             text='La lista debe estar ordenada de acuerdo con el nivel actual de cada jugador, colocando primero al de
             mayor nivel y último al de menor nivel.'
-            emoji='⚠️'
+            emoji='💪'
           />
 
           {id_season === actual_season && (
