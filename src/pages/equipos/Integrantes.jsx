@@ -93,7 +93,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
   }
 
   return (
-    <section className='fade-in flex flex-col gap-y-4 max-w-2xl mx-auto'>
+    <section className='fade-in flex flex-col gap-y-4'>
       {team && !team.length > 0 && <Messages text='El equipo todavia no tiene integrantes 🥲' />}
 
       {team && team.length > 0 && (

@@ -251,15 +251,11 @@ const Serie = ({ serie, match }) => {
           <div className='flex-1'>
             <select
               {...register('status')}
+              defaultValue='1'
               className='select select-bordered w-full'
               onChange={e => setShowPlayers(e.target.value === '1' ? true : false)}
             >
-              <option
-                value='1'
-                selected
-              >
-                🔥 Finalizado
-              </option>
+              <option value='1'>🔥 Finalizado</option>
               <option value='2'>🥲 W.O.</option>
             </select>
           </div>

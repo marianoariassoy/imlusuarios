@@ -24,7 +24,7 @@ const URL = ({ url }) => {
   return (
     <div className='flex flex-col gap-y-3'>
       <Aviso
-        text='Copiá el link para compartir la serie en el grupo de capitanes:'
+        text='Copiá el enlace y compartí la serie en el grupo de capitanes'
         emoji='🔗'
       />
 
