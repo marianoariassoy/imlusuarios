@@ -117,17 +117,24 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                 setList={setTeam}
                 tag='tbody'
                 animation={200}
-                delayOnTouchStart={false}
-                delay={5}
                 easing='ease-out'
+                handle='.drag-handle'
               >
                 {team.map((item, index) => (
-                  <tr
-                    key={item.id}
-                    className='w-full cursor-grab '
-                  >
+                  <tr key={item.id}>
                     <td>
-                      <span className='font-medium'>{index + 1}</span>
+                      <div className='flex items-center gap-x-3'>
+                        <div className='drag-handle cursor-grab'>
+                          <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            viewBox='0 0 448 512'
+                            className='w-5 h-5 fill-current opacity-50 hover:opacity-100'
+                          >
+                            <path d='M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z' />
+                          </svg>
+                        </div>
+                        <span className='font-medium'>{index + 1}</span>
+                      </div>
                     </td>
                     <td>
                       <Item
@@ -154,8 +161,8 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
           </div>
 
           <Aviso
-            text='Mantene presionado un jugador para arrastralo a la posición deseada.'
-            emoji='✋'
+            text='Mantene presionado el icono de la derecha de cada jugador para arrastrarlo a la posición deseada.'
+            emoji='👉'
           />
           <Aviso
             text='La lista debe estar ordenada de acuerdo con el nivel actual de cada jugador, colocando primero al de
