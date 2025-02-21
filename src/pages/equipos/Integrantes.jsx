@@ -41,6 +41,8 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
       if (response.data) {
         setTeam(response.data)
         setLoading(false)
+      } else {
+        setLoading(false)
       }
     } catch (error) {
       console.log(error)
