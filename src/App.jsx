@@ -36,7 +36,6 @@ const App = () => {
             path='/recuperar-password'
             element={<RecuperarPassword />}
           />
-
           <Route
             path='*'
             element={<PageNotFound />}

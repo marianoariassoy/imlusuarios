@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState({})
 
   const login = token => {
-    Cookies.set('token-imltenis', token, { expires: 3 })
+    Cookies.set('token-imltenis', token, { expires: 14 })
     const decode = jwtDecode(token)
     setUserData(decode)
     setIsLoggedIn(true)

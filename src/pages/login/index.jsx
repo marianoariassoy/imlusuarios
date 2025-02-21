@@ -12,11 +12,14 @@ import toast, { Toaster } from 'react-hot-toast'
 
 const index = () => {
   const { login, isLoggedIn } = useAuth()
+  const navigate = useNavigate()
   const [sending, setSending] = useState(false)
   const [error, setError] = useState(null)
   const [showPassword, setShowPassword] = useState(false)
-  const navigate = useNavigate()
-  if (isLoggedIn) navigate('/home')
+
+  useEffect(() => {
+    if (isLoggedIn) navigate('/home')
+  }, [isLoggedIn])
 
   const {
     register,
