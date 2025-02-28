@@ -23,7 +23,7 @@ const CaptainEquipoActuales = ({ id }) => {
   }
   return (
     <section className='fade-in flex flex-col gap-y-3'>
-      <div className='flex flex-col gap-y-3 bg-base-200 p-4 rounded-lg shadow-lg'>
+      <div className='flex flex-col gap-y-3 bg-black/20 p-4 rounded-lg shadow-lg'>
         <h1 className='text-sm font-medium text-primary'>Tus equipos</h1>
 
         <div className='flex flex-col gap-y-3 text-sm'>
