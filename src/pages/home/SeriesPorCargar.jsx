@@ -7,17 +7,17 @@ import Aviso from '../../components/Aviso'
 const SeriesPorCargar = ({ id }) => {
   const { data, loading } = useFetch(`/captain/${id}/series`)
   if (loading) return <Loader />
-  if (!data) return <Messages text='No tenes series por cargar 👍' />
+  if (!data) return <Messages text='No tenes ningún resultado para cargar 👍' />
 
   return (
     <section className='fade-in flex flex-col gap-y-3'>
+      <h1 className='text-sm font-semibold text-primary'>{data.length > 1 ? 'Próximas series' : 'Próxima serie'}</h1>
       <div className='flex flex-col bg-black/20 p-4 rounded-lg shadow-lg'>
-        <h1 className='text-sm font-medium text-primary'>Próximas series</h1>
         <Series data={data} />
       </div>
 
       <Aviso
-        emoji=''
+        emoji='👉'
         text='En caso de que tu equipo resulte ganador, deberás cargar los resultados correspondientes.'
       />
     </section>

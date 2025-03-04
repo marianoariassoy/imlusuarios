@@ -11,10 +11,10 @@ module.exports = {
     themes: [
       {
         dark: {
-          'base-content': '#848484',
+          'base-content': '#c1c1c1',
           primary: '#f34643',
-          secondary: '#666666',
-          'base-100': '#262626',
+          secondary: '#999',
+          'base-100': '#292929',
           'base-300': '#282828'
         }
       }
