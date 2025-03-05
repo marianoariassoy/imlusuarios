@@ -1,12 +1,8 @@
 import { useNavigate } from 'react-router-dom'
-import Item from '../../components/ItemSmall'
+import Item from '../../components/Item'
 
 const Fixture = ({ data }) => {
   const navigate = useNavigate()
-
-  const handleClick = id => {
-    navigate(`/series/${id}`)
-  }
 
   return (
     <div className='overflow-x-auto text-sm'>
@@ -23,7 +19,6 @@ const Fixture = ({ data }) => {
         <tbody>
           {data.map(item => (
             <tr
-              className='hover:bg-base-100 cursor-pointer'
               key={item.id}
               onClick={() => handleClick(item.id)}
             >
@@ -37,12 +32,14 @@ const Fixture = ({ data }) => {
                 <Item
                   title={item.home_name}
                   image={item.home_image}
+                  link={`/series/${item.id}`}
                 />
               </td>
               <td>
                 <Item
                   title={item.away_name}
                   image={item.away_image}
+                  link={`/series/${item.id}`}
                 />
               </td>
               <td>{item.tournament_name}</td>
