@@ -12,14 +12,11 @@ const SeriesPorCargar = ({ id }) => {
   return (
     <section className='fade-in flex flex-col gap-y-3'>
       <h1 className='text-sm font-semibold text-primary'>{data.length > 1 ? 'Próximas series' : 'Próxima serie'}</h1>
-      <div className='flex flex-col bg-black/20 p-4 rounded-lg shadow-lg'>
+      <div className='flex flex-col bg-black/20 p-4 rounded-lg shadow-2xl'>
         <Series data={data} />
       </div>
 
-      <Aviso
-        emoji='👉'
-        text='En caso de que tu equipo resulte ganador, deberás cargar los resultados correspondientes.'
-      />
+      <Aviso text='En caso de que tu equipo resulte ganador, deberás cargar los resultados correspondientes.' />
     </section>
   )
 }
