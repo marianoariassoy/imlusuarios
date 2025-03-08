@@ -37,7 +37,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
   const getPlayers = async () => {
     try {
       setLoading(true)
-      const response = await axios.get(`https://imltenis.com.ar/api/captain/${id_captain}/teams/${id_team}/players`)
+      const response = await axios.get(`https://api.imltenis.com.ar/captain/${id_captain}/teams/${id_team}/players`)
       if (response.data) {
         setTeam(response.data)
         setLoading(false)
@@ -79,7 +79,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
     setSending(true)
     setSended(null)
     try {
-      const response = await axios.post(`https://imltenis.com.ar/api/captain/update-team/${id_team}`, team)
+      const response = await axios.post(`https://api.imltenis.com.ar/captain/update-team/${id_team}`, team)
       if (response.data.success) {
         setSended(response.data.message)
         setSending(false)
