@@ -31,7 +31,7 @@ const index = () => {
     setError(false)
     setSending(true)
     try {
-      const response = await axios.post('https://imltenis.com.ar/api/users/login', data)
+      const response = await axios.post('https://api.imltenis.com.ar/users/login', data)
       if (response.data.success) {
         const token = response.data.token
         login(token)
