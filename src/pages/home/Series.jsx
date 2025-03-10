@@ -3,7 +3,7 @@ import Item from '../../components/Item'
 
 const Fixture = ({ data }) => {
   return (
-    <div className='overflow-x-auto text-sm whitespace-nowrap'>
+    <div className='overflow-x-auto text-sm whitespace-nowrap lg:whitespace-normal'>
       <table className='table w-full mb-3'>
         <thead>
           <tr>
