@@ -38,7 +38,7 @@ const Serie = ({ serie, match }) => {
   const onSubmit = async data => {
     setSending(true)
     setSended(null)
-    const URL = `https://imltenis.com.ar/api/series/${serie.id}/scores/${match.id}/update`
+    const URL = `https://api.imltenis.com.ar/series/${serie.id}/scores/${match.id}/update`
     try {
       const response = await axios.post(URL, data)
       if (response.data.success) {
@@ -268,15 +268,12 @@ const Serie = ({ serie, match }) => {
                 <BeatLoader />
               </div>
             ) : (
-              <Button>Confirmar punto</Button>
+              <Button>✅ Confirmar punto</Button>
             )}
           </div>
         ) : null}
 
-        <Aviso
-          text='El punto solo lo podrás confirmar una vez, en caso de error, contactate con tu coordinador.'
-          emoji='⚠️'
-        />
+        <Aviso text='Solo podrás confirmar el punto una vez, en caso de error, contactate con tu coordinador.' />
       </form>
 
       <Toaster />

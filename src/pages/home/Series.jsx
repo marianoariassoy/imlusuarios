@@ -1,11 +1,9 @@
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Item from '../../components/Item'
 
 const Fixture = ({ data }) => {
-  const navigate = useNavigate()
-
   return (
-    <div className='overflow-x-auto text-sm'>
+    <div className='overflow-x-auto text-sm whitespace-nowrap'>
       <table className='table w-full mb-3'>
         <thead>
           <tr>
@@ -24,7 +22,12 @@ const Fixture = ({ data }) => {
             >
               <td scope='row'>
                 <div className='flex gap-x-2 items-center'>
-                  <span className='font-medium text-primary'>{item.date}</span>
+                  <Link
+                    to={`/series/${item.id}`}
+                    className='font-medium text-primary hover:underline'
+                  >
+                    {item.date}
+                  </Link>
                 </div>
               </td>
               <td>{item.hour}</td>
