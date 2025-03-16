@@ -13,7 +13,7 @@ module.exports = {
         dark: {
           'base-content': '#b1b1b1',
           primary: '#f34643',
-          secondary: '#6f6f6f',
+          secondary: '#858585',
           'base-100': '#292929',
           'base-300': '#202020'
         }
