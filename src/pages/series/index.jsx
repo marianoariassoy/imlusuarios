@@ -24,8 +24,6 @@ const index = () => {
   if (loading) return <Loader />
   if (data === null) return <Messages text='No se encontro esta serie 🥲' />
 
-  console.log(data)
-
   return (
     <section className='fade-in flex flex-col gap-y-6'>
       <Header
