@@ -6,11 +6,11 @@ const CapitanEquiposAnteriores = ({ id }) => {
   const { data, loading } = useFetch(`/captain/${id}/teams`)
   if (loading) return <Loader />
   if (data === null) return null
-  const actual_season = 5
+  const actual_season = 6
   let dataFiltered = []
   if (data) dataFiltered = data.filter(item => item.season !== actual_season)
 
-  if (dataFiltered.length > 1)
+  if (dataFiltered.length > 0)
     return (
       <section className='fade-in flex flex-col gap-y-3 bg-base-200 p-4 rounded-lg shadow-lg'>
         <h1 className='text-sm font-medium text-primary'>Equipos anteriores</h1>

@@ -34,7 +34,7 @@ const Players = ({ addToTeam }) => {
     : []
 
   return (
-    <div className='flex flex-col gap-y-6 mt-3'>
+    <div className='flex flex-col gap-y-3 mt-3'>
       <h1 className='text-primary text-sm text-center font-semibold'>☝️ Agregar jugadores</h1>
       <input
         type='text'

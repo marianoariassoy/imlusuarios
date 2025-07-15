@@ -16,7 +16,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
   const [sending, setSending] = useState(false)
   const [sended, setSended] = useState(false)
   const [error, setError] = useState(null)
-  const actual_season = 5
+  const actual_season = 6
 
   useEffect(() => {
     getPlayers()

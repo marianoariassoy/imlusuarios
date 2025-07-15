@@ -4,7 +4,6 @@ import EquiposActuales from './EquiposActuales'
 import { useAuth } from '../../context'
 import Header from '../../components/Header'
 import SeriesPorCargar from './SeriesPorCargar'
-import Aviso from '../../components/Aviso'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -23,9 +22,10 @@ const Home = () => {
             emoji='🙂'
           />
 
-          <div className='text-sm mt-3'>
-            Bienvenido/a a tu nuevo panel de control para capitanes de IML Tenis. Desde acá podrás ver tus series y
-            equipos para gestionar 💪
+          <div className='text-sm mt-3 text-center'>
+            <strong className='block'> Bienvenido/a al nuevo Panel de Capitanes de IML Tenis.</strong>
+            Desde este espacio podrá visualizar sus series, equipos y gestionar todos los aspectos relacionados con la
+            competencia.
           </div>
         </div>
 
