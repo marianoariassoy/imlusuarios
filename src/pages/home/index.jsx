@@ -23,7 +23,7 @@ const Home = () => {
           />
 
           <div className='text-sm mt-3 text-center'>
-            <strong className='block'> Bienvenido/a al nuevo Panel de Capitanes de IML Tenis.</strong>
+            <strong className='block'> Bienvenido/a al Panel de Capitanes de IML Tenis.</strong>
             Desde este espacio podrá visualizar sus series, equipos y gestionar todos los aspectos relacionados con la
             competencia.
           </div>

@@ -18,9 +18,9 @@ const CaptainEquipoActuales = ({ id }) => {
 
   return (
     <section className='fade-in flex flex-col gap-y-3'>
-      <h1 className='text-sm font-semibold text-primary text-center'>
+      {/* <h1 className='text-sm font-semibold text-primary text-center'>
         {dataFiltered.length > 1 ? 'Tus equipos' : 'Tu equipo'}
-      </h1>
+      </h1> */}
 
       <div className='flex flex-col gap-y-3 bg-black/20 p-4 rounded-2xl shadow-2xl'>
         <div className='flex flex-col gap-y-3 text-sm'>
