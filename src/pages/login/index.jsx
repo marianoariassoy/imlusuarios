@@ -57,7 +57,7 @@ const index = () => {
   }
 
   return (
-    <section>
+    <section className='text-base'>
       <div className='flex flex-col gap-y-6'>
         <Header
           title='¡Hola Capi! 👋'
@@ -104,7 +104,7 @@ const index = () => {
             <div className='mt-2'>
               <Link
                 to='/recuperar-password'
-                className='hover:text-primary text-sm'
+                className='hover:text-primary text-base text-secondary'
               >
                 ¿Olvidaste tu contraseña?
               </Link>
@@ -123,7 +123,7 @@ const index = () => {
         <div className='text-center'>
           <a
             href='https://imltenis.com.ar/bienvenido'
-            className='hover:text-primary text-secondary text-sm'
+            className='hover:text-primary text-secondary'
             target='_blank'
             rel='noopener noreferrer'
           >

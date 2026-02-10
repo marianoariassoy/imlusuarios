@@ -35,13 +35,13 @@ const Players = ({ addToTeam }) => {
 
   return (
     <div className='flex flex-col gap-y-3 mt-3'>
-      <h1 className='text-primary text-sm text-center font-semibold'>Agregar jugadores</h1>
+      <h1 className='text-primary text-base text-center font-semibold mb-2'>Buscar y agregar jugadores</h1>
       <input
         type='text'
-        placeholder='Buscar por nombre o apellido'
+        placeholder='Nombre y/o apellido'
         value={query}
         onChange={handleFilterChange}
-        className='input input-bordered w-full text-sm max-w-md m-auto'
+        className='input input-bordered w-full text-base max-w-md m-auto'
       />
 
       <div className='overflow-x-auto text-sm'>

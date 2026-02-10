@@ -25,7 +25,7 @@ const IndexIntegrantes = () => {
       <header className='flex flex-col gap-y-2 items-center'>
         <div className='text-center'>
           <h1 className='font-bold text-xl text-primary'>{data.name}</h1>
-          <h2 className='font-medium text-sm'>{data.tournament_name}</h2>
+          <h2 className='font-medium text-base'>{data.tournament_name}</h2>
         </div>
       </header>
 

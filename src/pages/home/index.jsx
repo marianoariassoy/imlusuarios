@@ -15,16 +15,15 @@ const Home = () => {
 
   if (isLoggedIn)
     return (
-      <section className='fade-in flex flex-col gap-y-6'>
+      <section className='fade-in flex flex-col gap-y-6 text-base'>
         <div>
           <Header
-            title={`¡Hola ${userData.name.split(' ')[0]}! `}
-            emoji='🙂'
+            title='IML Capitanes 2026'
+            emoji=''
           />
 
-          <div className='text-sm mt-3 text-center'>
-            <strong className='block'> Bienvenido/a al Panel de Capitanes de IML Tenis.</strong>
-            Desde este espacio podrá visualizar sus series, equipos y gestionar todos los aspectos relacionados con la
+          <div className='mt-3 text-center'>
+            Desde este espacio podes visualizar tus series, equipos y gestionar todos los aspectos relacionados con la
             competencia.
           </div>
         </div>

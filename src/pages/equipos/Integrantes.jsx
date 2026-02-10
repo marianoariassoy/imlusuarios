@@ -101,19 +101,19 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
       {team && team.length > 0 && (
         <>
           <div>
-            <h1 className='text-primary text-sm text-center'>
+            <h1 className='text-primary text-center text-base'>
               🔥 <span className='font-semibold'>Lista de buena fe</span> ({team.length} jugadores)
             </h1>
           </div>
-          <div className='text-sm overflow-x-auto w-full'>
+          <div className='overflow-x-auto w-full text-base'>
             <table className='table mb-3'>
-              <thead>
+              {/* <thead>
                 <tr>
                   <th className='w-8'>Pos.</th>
                   <th>Nombre y apellido</th>
                   <th></th>
                 </tr>
-              </thead>
+              </thead> */}
               <ReactSortable
                 list={team}
                 setList={setTeam}
@@ -124,18 +124,18 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
               >
                 {team.map((item, index) => (
                   <tr key={item.id}>
-                    <td>
+                    <td className='w-10'>
                       <div className='flex items-center gap-x-3'>
                         <div className='drag-handle cursor-grab'>
                           <svg
                             xmlns='http://www.w3.org/2000/svg'
                             viewBox='0 0 448 512'
-                            className='w-5 h-5 fill-current text-secondary hover:text-primary'
+                            className='w-7 h-7 fill-current text-secondary hover:text-primary'
                           >
                             <path d='M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z' />
                           </svg>
                         </div>
-                        <span className='font-medium text-secondary'>{index + 1}</span>
+                        {/* <span className='font-medium text-base'>{index + 1}</span> */}
                       </div>
                     </td>
                     <td>
@@ -150,7 +150,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                           xmlns='http://www.w3.org/2000/svg'
                           viewBox='0 0 512 512'
                           fill='currentColor'
-                          className='w-4 h-4 hover:text-primary'
+                          className='w-6 h-6 text-secondary hover:text-primary'
                         >
                           <path d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM184 232l144 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-144 0c-13.3 0-24-10.7-24-24s10.7-24 24-24z' />
                         </svg>
@@ -181,13 +181,13 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
               ) : (
                 <div className='flex gap-x-3 justify-center'>
                   <button
-                    className='btn'
+                    className='btn text-base'
                     onClick={updateTeam}
                   >
                     Guardar equipo
                   </button>
                   <Link
-                    className='btn'
+                    className='btn text-base'
                     to='/home'
                   >
                     👈 Volver

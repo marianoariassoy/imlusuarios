@@ -6,11 +6,11 @@ const Exit = () => {
 
   return (
     <button
-      className='text-2xl'
+      className='text-sm bg-black/20 hover:bg-black/30 rounded-full py-2 transition-all px-6'
       onClick={logout}
       title='Cerrar sesión'
     >
-      👋
+      Salir
     </button>
   )
 }
