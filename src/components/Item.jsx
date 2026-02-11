@@ -3,7 +3,7 @@ import Image from './Image'
 
 const TitleRow = ({ image, title, link = '' }) => {
   return (
-    <div className='flex items-center gap-x-3 text-base'>
+    <div className='flex items-center gap-x-4 text-base'>
       <div className='avatar'>
         <div className='w-14 rounded-full'>
           {link ? (
@@ -27,12 +27,12 @@ const TitleRow = ({ image, title, link = '' }) => {
       {link ? (
         <Link
           to={link}
-          className='hover:text-primary font-medium whitespace-pre-wrap'
+          className='hover:text-primary font-medium whitespace-pre-wrap leading-tight'
         >
           {title}
         </Link>
       ) : (
-        <div className='whitespace-pre-wrap'>{title}</div>
+        <div className='whitespace-pre-wrap leading-tight'>{title}</div>
       )}
     </div>
   )

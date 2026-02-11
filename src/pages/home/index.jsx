@@ -22,9 +22,9 @@ const Home = () => {
             emoji=''
           />
 
-          <div className='mt-3 text-center'>
+          <div className='mt-3 text-center leading-tight'>
             Desde este espacio podes visualizar tus series, equipos y gestionar todos los aspectos relacionados con la
-            competencia.
+            competencia 💪🏻
           </div>
         </div>
 

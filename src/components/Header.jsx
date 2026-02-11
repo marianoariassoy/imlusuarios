@@ -3,7 +3,7 @@ const Header = ({ title, description = '', emoji = '' }) => {
     <header className='flex flex-col text-center'>
       {emoji && <div className='text-2xl'>{emoji}</div>}
       <h1 className='font-bold text-primary text-xl'>{title}</h1>
-      <div className='font-medium'>{description}</div>
+      <div>{description}</div>
     </header>
   )
 }

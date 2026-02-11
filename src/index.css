@@ -7,11 +7,9 @@
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
 }
-
 body {
-  font-size: 15px;
+  font-size: 14px;
 }
-
 .active,
 .nav-link:hover {
   text-decoration: underline;

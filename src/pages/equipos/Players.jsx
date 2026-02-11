@@ -41,7 +41,7 @@ const Players = ({ addToTeam }) => {
         placeholder='Nombre y/o apellido'
         value={query}
         onChange={handleFilterChange}
-        className='input input-bordered w-full text-base max-w-md m-auto'
+        className='input input-bordered w-full text-sm max-w-md m-auto'
       />
 
       <div className='overflow-x-auto text-sm'>
