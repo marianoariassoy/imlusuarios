@@ -104,7 +104,7 @@ const index = () => {
             <div className='mt-2'>
               <Link
                 to='/recuperar-password'
-                className='hover:text-primary text-base text-secondary'
+                className='hover:text-primary text-secondary text-sm'
               >
                 ¿Olvidaste tu contraseña?
               </Link>
@@ -119,16 +119,6 @@ const index = () => {
               )}
             </div>
           </form>
-        </div>
-        <div className='text-center'>
-          <a
-            href='https://imltenis.com.ar/bienvenido'
-            className='hover:text-primary text-secondary'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            👉 Si no estas registrado hacé clic acá
-          </a>
         </div>
       </div>
 
