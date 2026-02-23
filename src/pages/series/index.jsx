@@ -81,13 +81,13 @@ const index = () => {
 
       <div className='flex flex-col gap-y-3 justify-center'>
         <Link
-          className='btn w-full max-w-md px-6'
+          className='btn-2'
           to={`/encuestas/${id}`}
         >
           Encuesta
         </Link>
         <Link
-          className='btn w-full max-w-md px-6'
+          className='btn-2'
           to='/home'
         >
           👈 Volver

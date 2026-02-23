@@ -108,10 +108,11 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
 
       {team && team.length > 0 && (
         <>
-          <div>
+          <div className='text-center'>
             <h1 className='text-primary text-center text-base'>
-              🔥 <span className='font-semibold'>Lista de buena fe</span> ({team.length} jugadores)
+              🔥 <span className='font-semibold'>Lista de buena fe</span>
             </h1>
+            <p className='text-secondary'>({team.length} jugadores)</p>
           </div>
           <div className='overflow-x-auto w-full text-base'>
             <table className='table mb-3'>
@@ -132,18 +133,20 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
               >
                 {team.map((item, index) => (
                   <tr key={item.id}>
-                    <td className='w-10'>
+                    <td className='w-8'>
                       <div className='flex items-center gap-x-3'>
-                        <div className='drag-handle cursor-grab  text-secondary'>
+                        <div className='drag-handle cursor-grab  '>
                           <svg
                             xmlns='http://www.w3.org/2000/svg'
                             viewBox='0 0 448 512'
-                            className='w-7 h-7 fill-current hover:text-primary'
+                            className='w-6 h-6 text-white/30 fill-current hover:text-primary'
                           >
                             <path d='M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z' />
                           </svg>
                         </div>
-                        {/* <span className='font-medium text-base'>{index + 1}</span> */}
+                        <span className='font-medium text-base bg-primary w-6 h-6 flex items-center justify-center rounded-full text-base-300'>
+                          {index + 1}
+                        </span>
                       </div>
                     </td>
                     <td>
@@ -189,13 +192,13 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
               ) : (
                 <div className='flex gap-x-3 justify-center'>
                   <button
-                    className='btn'
+                    className='btn-2'
                     onClick={updateTeam}
                   >
                     Guardar equipo
                   </button>
                   <Link
-                    className='btn'
+                    className='btn-2'
                     to='/home'
                   >
                     👈 Volver

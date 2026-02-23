@@ -6,7 +6,7 @@ const Exit = () => {
 
   return (
     <button
-      className='text-sm btn bg-transparent py-2 transition-all px-6 text-primary border border-primary'
+      className='btn'
       onClick={logout}
       title='Cerrar sesión'
     >

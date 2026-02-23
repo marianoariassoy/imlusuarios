@@ -11,7 +11,7 @@ const SeriesPorCargar = ({ id }) => {
   return (
     <section className='fade-in flex flex-col gap-y-3'>
       <h1 className='font-semibold text-primary'>{data.length > 1 ? 'Series actuales ' : 'Serie actual '}</h1>
-      <div className='flex flex-col bg-black/15 p-4 rounded-2xl shadow-2xl'>
+      <div className='flex flex-col bg-black/15 p-4 rounded-2xl shadow-lg'>
         <Series data={data} />
       </div>
 

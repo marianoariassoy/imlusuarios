@@ -39,7 +39,7 @@ const index = () => {
 
       <div className='flex justify-center'>
         <Link
-          className='btn w-full max-w-md'
+          className='btn-2'
           to='/home'
         >
           👈 Volver
