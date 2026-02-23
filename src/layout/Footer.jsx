@@ -2,7 +2,7 @@ const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
-    <footer className='p-6 items-center justify-center flex flex-col text-secondary mt-6 text-base'>
+    <footer className='p-6 items-center justify-center flex flex-col text-secondary mt-6'>
       <div>
         <span className='font-bold'>Interclubes IML Tenis</span>
       </div>

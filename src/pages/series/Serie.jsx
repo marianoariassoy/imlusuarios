@@ -25,7 +25,7 @@ const Serie = ({ serie, match }) => {
 
   useEffect(() => {
     if (sended) {
-      toast.success(sended, { position: 'bottom-right', className: 'text-sm bg-base-300 text-white', duration: 4000 })
+      toast.success(sended, { position: 'bottom-right', className: 'text-sm bg-tertiary text-white', duration: 4000 })
     }
   }, [sended])
 
@@ -58,7 +58,7 @@ const Serie = ({ serie, match }) => {
 
   return (
     <div className={sended ? 'opacity-50' : ''}>
-      <h2 className='text-primary font-semibold text-center mb-3'>{match.type}</h2>
+      <h2 className='text-primary text-lg font-semibold text-center mb-3'>{match.type}</h2>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -72,7 +72,7 @@ const Serie = ({ serie, match }) => {
             <div className='form-control'>
               <Input
                 type='number'
-                title='Set 1'
+                title='Set 1 Local'
                 placeholder='-'
                 register={register('set1_home', {
                   required: texts.required,
@@ -86,7 +86,7 @@ const Serie = ({ serie, match }) => {
             <div className='form-control'>
               <Input
                 type='number'
-                title='Set 2'
+                title='Set 2 Local'
                 placeholder='-'
                 register={register('set2_home', {
                   required: texts.required,
@@ -100,7 +100,7 @@ const Serie = ({ serie, match }) => {
             <div className='form-control'>
               <Input
                 type='number'
-                title='Supertiebreak'
+                title='Super TB Local'
                 placeholder='-'
                 register={register('set3_home', {
                   min: { value: 0, message: 'El valor mínimo es 0' },
@@ -115,7 +115,7 @@ const Serie = ({ serie, match }) => {
             <div className='form-control'>
               <Input
                 type='number'
-                title='Set 1'
+                title='Set 1 Visitante'
                 placeholder='-'
                 register={register('set1_away', {
                   required: texts.required,
@@ -129,7 +129,7 @@ const Serie = ({ serie, match }) => {
             <div className='form-control'>
               <Input
                 type='number'
-                title='Set 2'
+                title='Set 2 Visitante'
                 placeholder='-'
                 register={register('set2_away', {
                   required: texts.required,
@@ -143,7 +143,7 @@ const Serie = ({ serie, match }) => {
             <div className='form-control'>
               <Input
                 type='number'
-                title='Supertiebreak'
+                title='Super TB Visitante'
                 placeholder='-'
                 register={register('set3_away', {
                   min: { value: 0, message: 'El valor mínimo es 0' },
@@ -164,9 +164,7 @@ const Serie = ({ serie, match }) => {
             <div className='flex-1'>
               <div className='form-control'>
                 <label className='label'>
-                  <span className='label-text font-medium'>
-                    {double ? 'Jugadores' : 'Jugador'} {serie.home_name}
-                  </span>
+                  <span className='label-text font-medium '>{double ? 'Jugadores Locales' : 'Jugador Local'}</span>
                 </label>
                 {loadingPlayersHome ? (
                   <BeatLoader />
@@ -205,8 +203,8 @@ const Serie = ({ serie, match }) => {
             <div className='flex-1'>
               <div className='form-control'>
                 <label className='label'>
-                  <span className='label-text font-medium'>
-                    {double ? 'Jugadores' : 'Jugador'} {serie.away_name}
+                  <span className='label-text font-medium '>
+                    {double ? 'Jugadores Visitantes' : 'Jugador Visitante'}
                   </span>
                 </label>
                 {loadingPlayersAway ? (
@@ -247,7 +245,7 @@ const Serie = ({ serie, match }) => {
         )}
 
         <div className='flex justify-between items-center gap-x-4'>
-          <div className='flex-1 text-sm'>Estado del punto:</div>
+          <div className='flex-1'>Estado del partido:</div>
           <div className='flex-1'>
             <select
               {...register('status')}
@@ -268,12 +266,12 @@ const Serie = ({ serie, match }) => {
                 <BeatLoader />
               </div>
             ) : (
-              <Button>✅ Confirmar punto</Button>
+              <Button>✅ Confirmar resultado</Button>
             )}
           </div>
         ) : null}
 
-        <Aviso text='Solo podrás confirmar el punto una vez, en caso de error, contactate con tu coordinador.' />
+        <Aviso text='Solo podrás confirmar el partido una vez, en caso de error, contactate con tu coordinador.' />
       </form>
 
       <Toaster />

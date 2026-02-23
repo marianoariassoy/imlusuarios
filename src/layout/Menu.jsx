@@ -8,7 +8,7 @@ const Menu = () => {
 
   return (
     <Link to='/home'>
-      <div className='w-14 h-14 rounded-full overflow-hidden'>
+      <div className='w-[3.7rem] h-[3.7rem] rounded-full overflow-hidden shadow-lg'>
         <Image
           src={userData.image}
           alt={userData.name}

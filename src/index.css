@@ -44,7 +44,14 @@ table tbody tr {
 .sortable-chosen {
   background-color: rgba(255, 255, 255, 0.1);
 }
-
 .btn {
   font-weight: 500;
+  border: solid 1px #fe514e;
+  color: #fe514e;
+  background-color: transparent;
+}
+.btn:hover {
+  border: solid 1px #e4e3e3;
+  background-color: transparent;
+  color: #e4e3e3;
 }

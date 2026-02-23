@@ -22,12 +22,12 @@ const index = () => {
   const { data: matches, loading: loadingMatches } = useFetch(`/series/${id}/matches`)
 
   if (loading) return <Loader />
-  if (data === null) return <Messages text='No se encontro esta serie 🥲' />
+  if (data === null) return <Messages text='🥲 No se encontro esta serie' />
 
   return (
     <section className='fade-in flex flex-col gap-y-6'>
       <Header
-        title={`${data.date} ${data.hour}`}
+        title={`Encuentro ${data.date} ${data.hour}`}
         description={data.tournament_name}
       />
 
@@ -39,7 +39,7 @@ const index = () => {
               alt={data.home_name}
             />
           </div>
-          <div className='text-center text-sm'>
+          <div className='text-center'>
             <h1 className='text-primary font-semibold'>{data.home_name}</h1>
             <span className='text-secondary'>Local</span>
           </div>
@@ -52,7 +52,7 @@ const index = () => {
               alt={data.away_name}
             />
           </div>
-          <div className='text-center text-sm'>
+          <div className='text-center'>
             <h1 className='text-primary font-semibold'>{data.away_name}</h1>
             <span className='text-secondary'>Visitante</span>
           </div>
@@ -79,9 +79,15 @@ const index = () => {
 
       <URL url={`https://imltenis.com.ar/series/${id}`} />
 
-      <div className='flex justify-center'>
+      <div className='flex flex-col gap-y-3 justify-center'>
         <Link
-          className='btn w-full max-w-xs text-sm px-6'
+          className='btn w-full max-w-md px-6'
+          to={`/encuestas/${id}`}
+        >
+          Encuesta
+        </Link>
+        <Link
+          className='btn w-full max-w-md px-6'
           to='/home'
         >
           👈 Volver

@@ -24,13 +24,21 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error, { position: 'bottom-right', className: 'text-sm bg-primary text-white', duration: 4000 })
+      toast.error(error, {
+        position: 'bottom-right',
+        className: 'text-sm bg-primary text-white z-[1090]',
+        duration: 4000
+      })
     }
   }, [error])
 
   useEffect(() => {
     if (sended) {
-      toast.success(sended, { position: 'bottom-right', className: 'text-sm bg-base-300 text-white', duration: 4000 })
+      toast.success(sended, {
+        position: 'bottom-right',
+        className: 'text-sm bg-white/10 text-white',
+        duration: 4000
+      })
     }
   }, [sended])
 
@@ -96,7 +104,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
 
   return (
     <section className='fade-in flex flex-col gap-y-4'>
-      {team && !team.length > 0 && <Messages text='El equipo todavia no tiene integrantes 🥲' />}
+      {team && !team.length > 0 && <Messages text='¡El equipo todavia no tiene integrantes!' />}
 
       {team && team.length > 0 && (
         <>
@@ -126,11 +134,11 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                   <tr key={item.id}>
                     <td className='w-10'>
                       <div className='flex items-center gap-x-3'>
-                        <div className='drag-handle cursor-grab'>
+                        <div className='drag-handle cursor-grab  text-secondary'>
                           <svg
                             xmlns='http://www.w3.org/2000/svg'
                             viewBox='0 0 448 512'
-                            className='w-7 h-7 fill-current text-secondary hover:text-primary'
+                            className='w-7 h-7 fill-current hover:text-primary'
                           >
                             <path d='M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z' />
                           </svg>
@@ -163,13 +171,13 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
           </div>
 
           <Aviso
-            text='Mantene presionado el icono de la izquierda de cada jugador para arrastrarlo a la posición deseada.'
-            emoji='👉'
-          />
-          <Aviso
             text='La lista debe estar ordenada de acuerdo con el nivel actual de cada jugador, colocando primero al de
             mayor nivel y último al de menor nivel.'
             emoji='⚠️'
+          />
+          <Aviso
+            text='Mantene presionado el icono de la izquierda de cada jugador para arrastrarlo a la posición deseada.'
+            emoji='👉'
           />
 
           {id_season === actual_season && (
@@ -181,13 +189,13 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
               ) : (
                 <div className='flex gap-x-3 justify-center'>
                   <button
-                    className='btn text-base'
+                    className='btn'
                     onClick={updateTeam}
                   >
                     Guardar equipo
                   </button>
                   <Link
-                    className='btn text-base'
+                    className='btn'
                     to='/home'
                   >
                     👈 Volver

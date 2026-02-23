@@ -1,21 +1,9 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Logo } from '../lib/icons'
 import Menu from './Menu'
 import Exit from './Exit'
 
 const Header = () => {
-  useEffect(() => {
-    const logo = document.querySelector('.logo-main')
-    window.onscroll = () => {
-      if (window.scrollY > 0) {
-        logo.classList.add('text-xs')
-      } else {
-        logo.classList.remove('text-xs')
-      }
-    }
-  }, [])
-
   return (
     <header
       className={`sticky top-0 z-40 mb-3 navbar w-full px-4 bg-gradient-to-b from-[#262626] via-[#262626]/70 to-transparent`}

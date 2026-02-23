@@ -8,29 +8,25 @@ const Fixture = ({ data }) => {
         <thead>
           <tr>
             <th scope='col'>Fecha</th>
-            <th scope='col'>Hora</th>
             <th scope='col'>Local</th>
             <th scope='col'>Visitante</th>
             <th scope='col'>Torneo</th>
+            <th scope='col'></th>
           </tr>
         </thead>
         <tbody>
           {data.map(item => (
-            <tr
-              key={item.id}
-              onClick={() => handleClick(item.id)}
-            >
+            <tr key={item.id}>
               <td scope='row'>
                 <div className='flex gap-x-2 items-center'>
                   <Link
                     to={`/series/${item.id}`}
                     className='font-medium text-primary hover:underline'
                   >
-                    {item.date}
+                    {item.date} {item.hour}
                   </Link>
                 </div>
               </td>
-              <td>{item.hour}</td>
               <td>
                 <Item
                   title={item.home_name}
@@ -46,6 +42,14 @@ const Fixture = ({ data }) => {
                 />
               </td>
               <td>{item.tournament_name}</td>
+              <td>
+                <Link
+                  to={`/encuestas/${item.id}`}
+                  className='text-sm btn bg-transparent py-2 transition-all px-6 text-primary border border-primary'
+                >
+                  Encuesta
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>
