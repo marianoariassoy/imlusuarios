@@ -6,7 +6,7 @@ const Exit = () => {
 
   return (
     <button
-      className='btn'
+      className='btn-2'
       onClick={logout}
       title='Cerrar sesión'
     >

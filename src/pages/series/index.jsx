@@ -8,6 +8,7 @@ import Header from '../../components/Header'
 import Image from '../../components/Image'
 import Serie from './Serie'
 import URL from './URL'
+import Aviso from '../../components/Aviso'
 
 const index = () => {
   const { userData, isLoggedIn } = useAuth()
@@ -24,13 +25,14 @@ const index = () => {
   if (loading) return <Loader />
   if (data === null) return <Messages text='🥲 No se encontro esta serie' />
 
+  const pendingMatches = matches?.filter(m => m.status === 'Pendiente') ?? []
+
   return (
     <section className='fade-in flex flex-col gap-y-6'>
       <Header
-        title={`Encuentro ${data.date} ${data.hour}`}
+        title={`${data.date} ${data.hour}`}
         description={data.tournament_name}
       />
-
       <header className='flex gap-x-4 w-full max-w-xs m-auto'>
         <div className='flex flex-1 flex-col gap-y-2 items-center'>
           <div className='rounded-full overflow-hidden w-20'>
@@ -58,7 +60,6 @@ const index = () => {
           </div>
         </div>
       </header>
-
       {loadingMatches ? (
         <Loader />
       ) : (
@@ -77,14 +78,25 @@ const index = () => {
           })
       )}
 
+      {pendingMatches && pendingMatches.length <= 0 ? (
+        <Aviso
+          text='Ya se completaron todos los encuentros.'
+          alert={true}
+        />
+      ) : null}
+
       <URL url={`https://imltenis.com.ar/series/${id}`} />
 
       <div className='flex flex-col gap-y-3 justify-center'>
+        <Aviso
+          text='¡Completá la encuesta de cada serie! 😉'
+          alert={true}
+        />
         <Link
           className='btn-2'
           to={`/encuestas/${id}`}
         >
-          Encuesta
+          📝 Encuesta
         </Link>
         <Link
           className='btn-2'

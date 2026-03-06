@@ -6,6 +6,7 @@ import { BeatLoader } from 'react-spinners'
 import Messages from '../../components/Messages'
 import axios from 'axios'
 import RatingLabel from './RatingLabel'
+import { Link } from 'react-router-dom'
 
 const SurveyForm = ({ id_captain, id_serie }) => {
   const [sending, setSending] = useState(false)
@@ -227,23 +228,30 @@ const SurveyForm = ({ id_captain, id_serie }) => {
             </p>
             <textarea
               rows='4'
-              className='mt-4 w-full rounded-xl bg-white/10 p-2 text-sm outline-none'
+              className='mt-4 w-full rounded-xl bg-transparent border border-primary p-2 text-sm outline-none'
               {...register('comments')}
             ></textarea>
           </article>
         </div>
 
-        {!sended ? (
-          <div className='flex justify-center'>
-            {sending ? (
+        <div className='flex justify-center items-center flex-col gap-y-3'>
+          {!sended ? (
+            sending ? (
               <div className='mt-6'>
                 <BeatLoader />
               </div>
             ) : (
-              <Button>Enviar encuesta</Button>
-            )}
-          </div>
-        ) : null}
+              <Button>✅ Enviar encuesta</Button>
+            )
+          ) : null}
+
+          <Link
+            className='btn-2 shadow-lg w-full max-w-md'
+            to='/home'
+          >
+            👈 Volver
+          </Link>
+        </div>
       </form>
       <Toaster />
     </>

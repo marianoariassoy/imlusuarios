@@ -24,11 +24,11 @@ const URL = ({ url }) => {
   return (
     <div className='flex flex-col gap-y-3'>
       <Aviso
-        text='Copiá el enlace y compartílo en tu grupo de capitanes'
-        emoji='🔗'
+        text='Copiá el enlace y compartílo en tu grupo de capitanes.'
+        alert={false}
       />
 
-      <div className='text-white bg-primary rounded-lg p-4 flex items-center justify-between gap-x-2'>
+      <div className='text-white bg-primary rounded-lg p-4 py-3 flex items-center justify-between gap-x-2 shadow-lg'>
         <span>{url}</span>
         <button
           onClick={handleCopy}

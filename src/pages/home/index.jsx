@@ -18,9 +18,9 @@ const Home = () => {
       <section className='fade-in flex flex-col gap-y-6'>
         <div>
           <Header title='IML Capitanes 2026' />
-          <div className='mt-3 text-center leading-tight'>
-            Desde este espacio podes visualizar tus series, equipos y gestionar todos los aspectos relacionados con la
-            competencia 💪🏻
+          <div className='mt-3 text-center leading-tight text-secondary'>
+            Desde este espacio podes visualizar tus series, equipos, encuestas y gestionar todos los aspectos
+            relacionados con la competencia 💪🏻
           </div>
         </div>
 

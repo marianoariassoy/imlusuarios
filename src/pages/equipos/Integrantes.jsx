@@ -116,13 +116,6 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
           </div>
           <div className='overflow-x-auto w-full text-base'>
             <table className='table mb-3'>
-              {/* <thead>
-                <tr>
-                  <th className='w-8'>Pos.</th>
-                  <th>Nombre y apellido</th>
-                  <th></th>
-                </tr>
-              </thead> */}
               <ReactSortable
                 list={team}
                 setList={setTeam}
@@ -135,7 +128,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                   <tr key={item.id}>
                     <td className='w-8'>
                       <div className='flex items-center gap-x-3'>
-                        <div className='drag-handle cursor-grab  '>
+                        <div className='drag-handle cursor-grab'>
                           <svg
                             xmlns='http://www.w3.org/2000/svg'
                             viewBox='0 0 448 512'
@@ -144,7 +137,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                             <path d='M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z' />
                           </svg>
                         </div>
-                        <span className='font-medium text-base bg-primary w-6 h-6 flex items-center justify-center rounded-full text-base-300'>
+                        <span className='font-medium bg-primary w-5 h-5 flex items-center justify-center rounded-full text-base-300 text-sm'>
                           {index + 1}
                         </span>
                       </div>

@@ -38,15 +38,8 @@ const index = () => {
       />
 
       <div className='flex justify-center'>
-        <Link
-          className='btn-2'
-          to='/home'
-        >
-          👈 Volver
-        </Link>
+        <Aviso text='Esta encuesta es únicamente de uso interno, no será compartida. Quedate tranquilo 😉' />
       </div>
-
-      <Aviso text='Esta encuesta es únicamente de uso interno, no será publicada en ningún medio.' />
     </section>
   )
 }

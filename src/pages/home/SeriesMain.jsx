@@ -10,13 +10,18 @@ const SeriesPorCargar = ({ id }) => {
 
   return (
     <section className='fade-in flex flex-col gap-y-3'>
-      <h1 className='font-semibold text-primary'>{data.length > 1 ? 'Series actuales ' : 'Serie actual '}</h1>
-      <div className='flex flex-col bg-black/15 p-4 rounded-2xl shadow-lg'>
-        <Series data={data} />
-      </div>
+      <h1 className='font-semibold text-primary'>{'Series actuales (' + data.length + ')'}</h1>
 
-      <Aviso text='En caso de que tu equipo resulte ganador, deberás cargar los resultados correspondientes.' />
-      <Aviso text='¡No te olvides de completar tus encuestas!' />
+      <Series data={data} />
+
+      <Aviso
+        text='En caso de que tu equipo resulte ganador, deberás cargar los resultados correspondientes.'
+        alert={false}
+      />
+      <Aviso
+        text='¡No te olvides de completar la encuesta de cada serie! 😉'
+        alert={true}
+      />
     </section>
   )
 }

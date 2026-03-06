@@ -3,9 +3,9 @@ import Image from './Image'
 
 const TitleRow = ({ image, title, link = '' }) => {
   return (
-    <div className='flex items-center gap-x-3'>
+    <div className='flex items-center gap-x-2'>
       <div className='avatar'>
-        <div className='w-14 rounded-full'>
+        <div className='w-10 rounded-full'>
           {link ? (
             <Link
               to={link}
