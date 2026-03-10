@@ -137,7 +137,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                             <path d='M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z' />
                           </svg>
                         </div>
-                        <span className='font-medium bg-primary w-5 h-5 flex items-center justify-center rounded-full text-base-300 text-sm'>
+                        <span className='font-medium bg-primary w-6 h-6 flex items-center justify-center rounded-full text-base-300 text-sm'>
                           {index + 1}
                         </span>
                       </div>
