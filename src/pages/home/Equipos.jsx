@@ -20,7 +20,7 @@ const CaptainEquipoActuales = ({ id }) => {
     <section className='fade-in flex flex-col gap-y-3'>
       <h1 className='font-semibold text-primary'>{'Equipos (' + dataFiltered.length + ')'}</h1>
 
-      <div className='bg-black/15 shadow-lg p-4 px-6 rounded-2xl'>
+      <div className='bg-black/15 shadow-lg p-4 rounded-2xl'>
         <div className='flex flex-col text-sm overflow-x-auto pb-2'>
           {dataFiltered.map((item, index) => (
             <div

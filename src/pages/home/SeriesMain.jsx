@@ -10,7 +10,7 @@ const SeriesPorCargar = ({ id }) => {
 
   return (
     <section className='fade-in flex flex-col gap-y-3'>
-      <h1 className='font-semibold text-primary'>{'Series actuales (' + data.length + ')'}</h1>
+      <h1 className='font-semibold text-primary'>{'Series (' + data.length + ')'}</h1>
 
       <Series data={data} />
 
