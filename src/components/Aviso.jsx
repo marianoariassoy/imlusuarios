@@ -2,8 +2,8 @@ import { Info, Alert } from '../lib/icons'
 
 const Aviso = ({ text, alert }) => {
   return (
-    <div className='text-secondary flex gap-x-1 mt-2 leading-tight text-sm'>
-      <span className='text-primary shrink-0'>{alert ? <Alert /> : <Info />}</span>
+    <div className='text-secondary flex items-center gap-x-1 mt-2 leading-tight text-sm'>
+      <span className='text-primary shrink-0 text-lg'>{alert ? <Alert /> : <Info />}</span>
       <span> {text}</span>
     </div>
   )
