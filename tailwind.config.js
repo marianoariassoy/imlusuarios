@@ -15,8 +15,8 @@ module.exports = {
           primary: '#fe514e',
           secondary: '#999999',
           tertiary: '#666666',
-          'base-100': '#292929',
-          'base-300': '#242424'
+          'base-100': '#222222',
+          'base-300': '#222222'
         }
       }
     ]

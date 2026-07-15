@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
-import { BeatLoader } from 'react-spinners'
+import Loader from '../../components/Loader'
 import { Input, Button } from '../../ui'
 import { texts } from '../../lib/data'
 import { useAuth } from '../../context'
@@ -61,7 +61,7 @@ const index = () => {
       <div className='flex flex-col gap-y-6'>
         <Header
           title='¡Hola Capi! 👋'
-          description='Ingresa tus datos para acceder a tu cuenta'
+          description='Ingresá tus datos para acceder a tu cuenta'
         />
 
         <div className='w-full max-w-md m-auto'>
@@ -70,7 +70,7 @@ const index = () => {
               <Input
                 type='email'
                 title='Email'
-                placeholder='Ingresa tu email'
+                placeholder='Email'
                 register={register('email', {
                   required: texts.required,
                   maxLength: 50,
@@ -93,7 +93,7 @@ const index = () => {
               <Input
                 type={showPassword ? 'text' : 'password'}
                 title='Contraseña'
-                placeholder='Ingresa tu contraseña'
+                placeholder='Contraseña'
                 register={register('password', {
                   required: texts.required,
                   validate: value => value.length > 4 || 'La longitud debe ser mayor a 4 caracteres'
@@ -104,7 +104,7 @@ const index = () => {
             <div className='mt-2'>
               <Link
                 to='/recuperar-password'
-                className='hover:text-primary text-secondary text-sm'
+                className='hover:text-primary text-secondary'
               >
                 ¿Olvidaste tu contraseña?
               </Link>
@@ -112,7 +112,7 @@ const index = () => {
             <div className='form-control mt-6 flex items-center justify-center'>
               {sending ? (
                 <div className='mt-6'>
-                  <BeatLoader />
+                  <Loader />
                 </div>
               ) : (
                 <Button>Iniciar sesión</Button>

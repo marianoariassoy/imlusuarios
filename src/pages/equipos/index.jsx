@@ -5,6 +5,7 @@ import Loader from '../../components/Loader'
 import { useAuth } from '../../context'
 import Integrantes from './Integrantes'
 import Messages from '../../components/Messages'
+import Header from '../../components/Header'
 
 const IndexIntegrantes = () => {
   const { userData, isLoggedIn } = useAuth()
@@ -20,19 +21,18 @@ const IndexIntegrantes = () => {
   if (loading) return <Loader />
   if (data === null) return <Messages text='🥲 No se encontro el equipo' />
 
+  // console.log(data)
   return (
     <section className='fade-in flex flex-col gap-y-6'>
-      <header className='flex flex-col gap-y-2 items-center'>
-        <div className='text-center'>
-          <h1 className='font-bold text-xl text-primary'>{data.name}</h1>
-          <h2 className='font-medium'>{data.tournament_name}</h2>
-        </div>
-      </header>
-
+      <Header
+        title={data.name}
+        description={data.tournament_name}
+      />
       <Integrantes
         id_captain={userData.id}
         id_team={id}
         id_season={data.season_id}
+        category={data.category}
       />
     </section>
   )

@@ -6,7 +6,7 @@ const Input = ({ type, title, placeholder, register }) => {
       </label>
       <input
         type={type}
-        className='w-full input input-bordered border-primary text-sm'
+        className='w-full input input-bordered border-primary placeholder-secondary'
         placeholder={placeholder}
         {...register}
       />

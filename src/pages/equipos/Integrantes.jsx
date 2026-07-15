@@ -3,20 +3,19 @@ import { Link } from 'react-router-dom'
 import { ReactSortable } from 'react-sortablejs'
 import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast'
-import { BeatLoader } from 'react-spinners'
 import Loader from '../../components/Loader'
 import Item from '../../components/Item'
 import Players from './Players'
 import Messages from '../../components/Messages'
 import Aviso from '../../components/Aviso'
 
-const Integrantes = ({ id_captain, id_team, id_season }) => {
+const Integrantes = ({ id_captain, id_team, id_season, category }) => {
   const [team, setTeam] = useState([])
   const [loading, setLoading] = useState(false)
   const [sending, setSending] = useState(false)
   const [sended, setSended] = useState(false)
   const [error, setError] = useState(null)
-  const actual_season = 7
+  const actual_season = 8
 
   useEffect(() => {
     getPlayers()
@@ -36,7 +35,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
     if (sended) {
       toast.success(sended, {
         position: 'bottom-right',
-        className: 'text-sm bg-white/10 text-white',
+        className: 'text-sm bg-black/80 text-white',
         duration: 4000
       })
     }
@@ -103,18 +102,18 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
   }
 
   return (
-    <section className='fade-in flex flex-col gap-y-4 max-w-xl mx-auto'>
+    <section className='fade-in w-full flex flex-col gap-y-4 max-w-2xl mx-auto'>
       {team && !team.length > 0 && <Messages text='¡El equipo todavia no tiene integrantes!' />}
 
       {team && team.length > 0 && (
         <>
-          <div className='text-center'>
-            <h1 className='text-primary text-center text-base'>
+          <div className='text-center text-base w-full'>
+            <h1 className='text-primary text-center'>
               🔥 <span className='font-semibold'>Lista de buena fe</span>
             </h1>
             <p className='text-secondary'>({team.length} jugadores)</p>
           </div>
-          <div className='overflow-x-auto w-full text-base'>
+          <div className='overflow-x-auto'>
             <table className='table mb-3'>
               <ReactSortable
                 list={team}
@@ -137,7 +136,7 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                             <path d='M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z' />
                           </svg>
                         </div>
-                        <span className='font-medium bg-primary w-5 h-5 flex items-center justify-center rounded-full text-base-300 text-sm'>
+                        <span className='font-medium bg-primary w-8 h-8 flex items-center justify-center rounded-full text-base-300  '>
                           {index + 1}
                         </span>
                       </div>
@@ -166,21 +165,18 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
             </table>
           </div>
 
+          <Aviso text='Mantene presionado el icono de la izquierda de cada jugador para arrastrarlo a la posición deseada.' />
           <Aviso
             text='La lista debe estar ordenada de acuerdo con el nivel actual de cada jugador, colocando primero al de
             mayor nivel y último al de menor nivel.'
-            emoji='⚠️'
           />
-          <Aviso
-            text='Mantene presionado el icono de la izquierda de cada jugador para arrastrarlo a la posición deseada.'
-            emoji='👉'
-          />
+          <Aviso text='El armado de la lista de buena fe es responsabilidad del capitán. Cualquier incumplimiento del reglamento será considerado una infracción y podrá ser sancionado durante el torneo. Cualquier duda consulta con tu coordinador.' />
 
           {id_season === actual_season && (
             <div className='text-center mb-3 mt-3'>
               {sending ? (
                 <div className='mt-6'>
-                  <BeatLoader />
+                  <Loader />
                 </div>
               ) : (
                 <div className='flex gap-x-3 justify-center'>
@@ -188,13 +184,13 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
                     className='btn-2'
                     onClick={updateTeam}
                   >
-                    Guardar equipo
+                    🚀 Guardar equipo
                   </button>
                   <Link
                     className='btn-2'
                     to='/home'
                   >
-                    👈 Volver
+                    👈🏻 Volver
                   </Link>
                 </div>
               )}
@@ -203,7 +199,12 @@ const Integrantes = ({ id_captain, id_team, id_season }) => {
         </>
       )}
 
-      {id_season === actual_season && <Players addToTeam={addToTeam} />}
+      {id_season === actual_season && (
+        <Players
+          addToTeam={addToTeam}
+          category={category}
+        />
+      )}
 
       <Toaster />
     </section>

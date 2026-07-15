@@ -9,7 +9,7 @@ const CaptainEquipoActuales = ({ id }) => {
   if (loading) return <Loader />
   if (data === null) return <Messages text='🥲 No tenes equipos en la temporada actual' />
 
-  const actual_season = 7
+  const actual_season = 8
   let dataFiltered = []
   if (data) {
     dataFiltered = data.filter(item => item.season === actual_season)
@@ -18,9 +18,9 @@ const CaptainEquipoActuales = ({ id }) => {
 
   return (
     <section className='fade-in flex flex-col gap-y-3'>
-      <h1 className='font-semibold text-primary'>{'Equipos (' + dataFiltered.length + ')'}</h1>
+      <h1 className='font-semibold text-primary'>{'Tus Equipos (' + dataFiltered.length + ')'}</h1>
 
-      <div className='bg-black/15 shadow-lg p-4 rounded-2xl'>
+      <div className='bg-white/5 px-4 py-4 md:px-6 rounded-xl'>
         <div className='flex flex-col text-sm overflow-x-auto pb-2'>
           {dataFiltered.map((item, index) => (
             <div
@@ -38,7 +38,7 @@ const CaptainEquipoActuales = ({ id }) => {
       </div>
 
       <Aviso
-        text='Podes modificar las listas de buena fe hasta el 14 de Marzo.'
+        text='¡Ojo! Podes modificar las listas de buena fe hasta el 8 de Agosto.'
         alert={true}
       />
     </section>

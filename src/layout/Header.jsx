@@ -5,9 +5,7 @@ import Exit from './Exit'
 
 const Header = () => {
   return (
-    <header
-      className={`sticky top-0 z-40 mb-3 navbar w-full px-4 bg-gradient-to-b from-[#262626] via-[#262626]/70 to-transparent`}
-    >
+    <header className={`sticky top-0 z-40 mb-3 navbar w-full px-4 bg-gradient-to-b from-[#262626] to-[#262626]/0`}>
       <div className='navbar-start'>
         <Exit />
       </div>

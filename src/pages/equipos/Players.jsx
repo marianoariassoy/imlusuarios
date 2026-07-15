@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 import useFetch from '../../hooks/useFetch'
 import Loader from '../../components/Loader'
 import Item from '../../components/ItemSmall'
+import Aviso from '../../components/Aviso'
 
-const Players = ({ addToTeam }) => {
+const Players = ({ addToTeam, category }) => {
   const { data, loading } = useFetch(`/players`)
   const [players, setPlayers] = useState([])
   const [query, setQuery] = useState('')
@@ -15,7 +16,17 @@ const Players = ({ addToTeam }) => {
       .toLowerCase()
 
   useEffect(() => {
-    setPlayers(data)
+    if (data) {
+      if (category) {
+        if (category !== 19) {
+          setPlayers(data.filter(item => item.category === category))
+        } else {
+          setPlayers(data)
+        }
+      } else {
+        setPlayers(data)
+      }
+    }
   }, [data])
 
   if (loading) return <Loader />
@@ -23,6 +34,8 @@ const Players = ({ addToTeam }) => {
   const handleFilterChange = event => {
     setQuery(event.target.value)
   }
+
+  // console.log(data)
 
   const addPlayer = player => {
     addToTeam(player)
@@ -34,45 +47,58 @@ const Players = ({ addToTeam }) => {
     : []
 
   return (
-    <div className='flex flex-col gap-y-3 mt-3'>
-      <h1 className='text-primary text-center font-semibold mb-2'>Buscar y agregar jugadores</h1>
-      <input
-        type='text'
-        placeholder='Nombre y/o apellido'
-        value={query}
-        onChange={handleFilterChange}
-        className='input input-bordered w-full text-sm max-w-md m-auto'
-      />
+    <>
+      {category === 19 && (
+        <Aviso text='Mixto B: Jugadoras hasta Tercera - Jugadores hasta Cuarta / Mixto C: Jugadoras hasta Cuarta - Jugadores haasta Quinta.' />
+      )}
 
-      <div className='overflow-x-auto text-sm'>
-        <table className='table w-full rounded-none mb-3'>
-          <tbody>
-            {filteredPlayers.map(item => (
-              <tr key={item.id}>
-                <td>
-                  <Item
-                    image={item.image}
-                    title={item.name}
-                  />
-                </td>
-                <td align='right'>
-                  <button onClick={() => addPlayer(item)}>
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      viewBox='0 0 512 512'
-                      fill='currentColor'
-                      className='w-5 h-5 text-secondary hover:text-primary'
+      <div className='flex flex-col gap-y-3 mt-3'>
+        <h1 className='text-primary text-center font-semibold mb-2'> 🔍 Buscar y agregar jugadores</h1>
+        <input
+          type='text'
+          placeholder='Nombre y/o apellido'
+          value={query}
+          onChange={handleFilterChange}
+          className='input input-bordered border-primary w-full max-w-md m-auto placeholder-secondary'
+        />
+
+        <div className='overflow-x-auto'>
+          <table className='table w-full rounded-none mb-3'>
+            <tbody>
+              {filteredPlayers.map(item => (
+                <tr key={item.id}>
+                  <td>
+                    <button
+                      onClick={() => removePlayer(item)}
+                      className='hover:text-primary'
                     >
-                      <path d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z' />
-                    </svg>
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                      <Item
+                        image={item.image}
+                        title={item.name}
+                      />
+                    </button>
+                  </td>
+                  <td align='right'>
+                    <button onClick={() => addPlayer(item)}>
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        viewBox='0 0 512 512'
+                        fill='currentColor'
+                        className='w-5 h-5 text-secondary hover:text-primary'
+                      >
+                        <path d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z' />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <Aviso text='Los jugadores se muestran filtrados por categoría. Si no encontrás a un jugador, por favor informalo a tu coordinador.' />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
