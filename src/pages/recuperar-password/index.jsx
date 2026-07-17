@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
-import { BeatLoader } from 'react-spinners'
+import Loader from '../../components/Loader'
 import { Input, Button } from '../../ui'
 import { texts } from '../../lib/data'
 import Validation from '../../components/Validation'
@@ -45,7 +45,7 @@ const index = () => {
   }
 
   return (
-    <section>
+    <section className='w-full max-w-md m-auto '>
       <div className='flex flex-col gap-y-6'>
         {!sended ? (
           <Header
@@ -56,38 +56,36 @@ const index = () => {
           <Messages text='Se envio un enlace a tu correo para restablecer tu contraseña 👍' />
         )}
 
-        <div className='w-full max-w-md m-auto'>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className={sended ? 'hidden' : ''}
-          >
-            <div className='form-control'>
-              <Input
-                type='email'
-                title='Email'
-                placeholder='Ingrea tu email'
-                register={register('email', {
-                  required: texts.required,
-                  maxLength: 50,
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: 'Dirección de correo electrónico inválida'
-                  }
-                })}
-              />
-              {errors.email && <Validation text={errors.email.message} />}
-            </div>
-            <div className='form-control mt-6 flex items-center justify-center'>
-              {sending ? (
-                <div className='mt-6'>
-                  <BeatLoader />
-                </div>
-              ) : (
-                <Button>Enviar</Button>
-              )}
-            </div>
-          </form>
-        </div>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className={sended ? 'hidden' : ''}
+        >
+          <div className='form-control'>
+            <Input
+              type='email'
+              title='Email'
+              placeholder='Ingrea tu email'
+              register={register('email', {
+                required: texts.required,
+                maxLength: 50,
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: 'Dirección de correo electrónico inválida'
+                }
+              })}
+            />
+            {errors.email && <Validation text={errors.email.message} />}
+          </div>
+          <div className='form-control mt-6 flex items-center justify-center'>
+            {sending ? (
+              <div className='mt-6'>
+                <Loader />
+              </div>
+            ) : (
+              <Button>Enviar</Button>
+            )}
+          </div>
+        </form>
       </div>
 
       <Toaster />

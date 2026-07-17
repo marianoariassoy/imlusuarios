@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Equipos from './Equipos'
+import EquiposAnteriores from './EquiposAnteriores'
 import { useAuth } from '../../context'
 import Header from '../../components/Header'
 import SeriesMain from './SeriesMain'
@@ -20,7 +21,7 @@ const Home = () => {
           <Header
             title='IML Capitanes'
             description='Desde este espacio podes visualizar tus series, equipos, encuestas y gestionar todos los aspectos
-            relacionados con la competencia 💪🏻'
+            relacionados con la competencia.'
             emoji='👮🏻‍♂️'
           />
           <div className='mt-3 text-center leading-tight text-secondary'></div>
@@ -28,6 +29,7 @@ const Home = () => {
 
         <SeriesMain id={userData.id} />
         <Equipos id={userData.id} />
+        <EquiposAnteriores id={userData.id} />
       </section>
     )
 }
