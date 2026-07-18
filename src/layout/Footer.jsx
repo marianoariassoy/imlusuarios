@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className='p-6 items-center justify-center flex flex-col text-secondary mt-6'>
       <div>
-        <span className='font-semibold'> IML Tenis Capitanes</span>
+        <span className='font-semibold'>IML Capitanes</span>
       </div>
       <div className='flex gap-x-1 items-center justify-center flex-wrap'>
         <span>
@@ -17,7 +17,7 @@ const Footer = () => {
             hola@imltenis.com.ar
           </a>
         </span>
-        <span> - </span>
+        <span> — </span>
         <span>Hecho con ❤︎ en {year}</span>
       </div>
     </footer>
