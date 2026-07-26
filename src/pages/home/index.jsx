@@ -22,7 +22,7 @@ const Home = () => {
             title='IML Capitanes'
             description='Desde este espacio podes visualizar tus series, equipos, encuestas y gestionar todos los aspectos
             relacionados con la competencia.'
-            emoji='👮🏻‍♂️'
+            emoji='📋'
           />
           <div className='mt-3 text-center leading-tight text-secondary'></div>
         </div>
