@@ -9,7 +9,7 @@ const CaptainEquipoActuales = ({ id }) => {
   if (loading) return <Loader />
   if (data === null) return <Messages text='🥲 No tenes equipos en la temporada actual' />
 
-  const actual_season = 8
+  const actual_season = +import.meta.env.VITE_ACTUAL_SESION
   let dataFiltered = []
   if (data) {
     dataFiltered = data.filter(item => item.season === actual_season)

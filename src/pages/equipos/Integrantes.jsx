@@ -15,7 +15,7 @@ const Integrantes = ({ id_captain, id_team, id_season, category }) => {
   const [sending, setSending] = useState(false)
   const [sended, setSended] = useState(false)
   const [error, setError] = useState(null)
-  const actual_season = 8
+  const actual_season = +import.meta.env.VITE_ACTUAL_SESION
 
   useEffect(() => {
     getPlayers()
