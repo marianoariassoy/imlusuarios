@@ -38,7 +38,7 @@ const CaptainEquipoActuales = ({ id }) => {
       </div>
 
       <Aviso
-        text='¡Ojo! Podes modificar las listas de buena fe hasta el 8 de Agosto.'
+        text='¡Ojo! Podes modificar las listas de buena fe hasta el 15 de Agosto.'
         alert={true}
       />
     </section>
