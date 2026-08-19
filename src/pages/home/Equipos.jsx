@@ -21,7 +21,7 @@ const CaptainEquipoActuales = ({ id }) => {
       <h1 className='font-semibold text-primary'>{'Equipos compitiendo (' + dataFiltered.length + ')'}</h1>
 
       <div className='bg-white/5 px-4 py-4 md:px-6 rounded-xl'>
-        <div className='flex flex-col text-sm overflow-x-auto pb-2'>
+        <div className='flex flex-col text-sm overflow-x-auto'>
           {dataFiltered.map((item, index) => (
             <div
               key={index}

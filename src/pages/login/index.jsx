@@ -109,7 +109,7 @@ const index = () => {
                 ¿Olvidaste tu contraseña?
               </Link>
             </div>
-            <div className='form-control mt-6 flex items-center justify-center'>
+            <div className='form-control mt-6 flex items-center justify-center font-medium'>
               {sending ? (
                 <div className='mt-6'>
                   <Loader />
