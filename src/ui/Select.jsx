@@ -1,7 +1,7 @@
 const Select = ({ options, register, title }) => {
   return (
     <select
-      className='select select-bordered w-full'
+      className='select select-bordered w-full text-base'
       {...register}
       defaultValue=''
     >

@@ -100,7 +100,7 @@ const Serie = ({ serie, match }) => {
             <div className='form-control'>
               <Input
                 type='number'
-                title='Super TB Local'
+                title='Set 3 Local (ST)'
                 placeholder='-'
                 register={register('set3_home', {
                   min: { value: 0, message: 'El valor mínimo es 0' },
@@ -143,7 +143,7 @@ const Serie = ({ serie, match }) => {
             <div className='form-control'>
               <Input
                 type='number'
-                title='Super TB Visitante'
+                title='Set 3 Visitante (ST)'
                 placeholder='-'
                 register={register('set3_away', {
                   min: { value: 0, message: 'El valor mínimo es 0' },
@@ -161,10 +161,12 @@ const Serie = ({ serie, match }) => {
             className='flex gap-x-4'
             id='jugadores'
           >
-            <div className='flex-1'>
+            <div className='flex-1 '>
               <div className='form-control'>
                 <label className='label'>
-                  <span className='label-text font-medium '>{double ? 'Jugadores Locales' : 'Jugador Local'}</span>
+                  <span className='label-text font-medium text-base'>
+                    {double ? 'Jugadores Locales' : 'Jugador Local'}
+                  </span>
                 </label>
                 {loadingPlayersHome ? (
                   <BeatLoader />
@@ -203,7 +205,7 @@ const Serie = ({ serie, match }) => {
             <div className='flex-1'>
               <div className='form-control'>
                 <label className='label'>
-                  <span className='label-text font-medium '>
+                  <span className='label-text font-medium text-base'>
                     {double ? 'Jugadores Visitantes' : 'Jugador Visitante'}
                   </span>
                 </label>
@@ -250,7 +252,7 @@ const Serie = ({ serie, match }) => {
             <select
               {...register('status')}
               defaultValue='1'
-              className='select select-bordered w-full'
+              className='select select-bordered w-full text-base'
               onChange={e => setShowPlayers(e.target.value === '1' ? true : false)}
             >
               <option value='1'>🔥 Finalizado</option>
@@ -260,7 +262,7 @@ const Serie = ({ serie, match }) => {
         </div>
 
         {!sended ? (
-          <div className='flex justify-center'>
+          <div className='flex justify-center mt-4'>
             {sending ? (
               <div className='mt-6'>
                 <BeatLoader />

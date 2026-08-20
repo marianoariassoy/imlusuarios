@@ -2,7 +2,7 @@ const Input = ({ type, title, placeholder, register }) => {
   return (
     <div>
       <label className='label'>
-        <span className='label-text text-primary font-medium'>{title}</span>
+        <span className='label-text text-primary font-medium text-base'>{title}</span>
       </label>
       <input
         type={type}

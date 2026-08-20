@@ -1,29 +1,25 @@
 import { Link } from 'react-router-dom'
-import Item from '../../components/Item'
+import Item from '../../components/ItemSmall'
 
 const Fixture = ({ data }) => {
   return data.map(item => (
     <div
       key={item.id}
-      className='flex flex-col gap-y-4 text-sm bg-black/15 p-4 rounded-2xl shadow-lg whitespace-nowrap overflow-x-auto mb-2'
+      className='flex flex-col gap-y-4 text-base bg-black/15 px-4 py-4 md:px-6 rounded-2xl whitespace-nowrap overflow-x-auto mb-2 shadow-lg'
     >
-      <div className='flex items-center gap-x-2 whitespace-nowrap'>
+      <div className='flex items-center gap-x-2 whitespace-nowrap font-medium '>
         <span className='text-primary'>
           {item.date} {item.hour !== '-' ? `${item.hour}` : ''}
         </span>
-        <span className='text-secondary'>—</span>
         <Item
           title={item.home_name}
           image={item.home_image}
-          link=''
         />
         ⚡️
         <Item
           title={item.away_name}
           image={item.away_image}
-          link=''
         />
-        <span className='text-secondary'>—</span>
         <span className='text-primary'>{item.tournament_name}</span>
         <span className='pr-4 text-secondary'>#{item.id}</span>
       </div>

@@ -233,7 +233,6 @@ const SurveyForm = ({ id_captain, id_serie }) => {
             ></textarea>
           </article>
         </div>
-
         <div className='flex justify-center items-center flex-col gap-y-3'>
           {!sended ? (
             sending ? (
@@ -241,16 +240,9 @@ const SurveyForm = ({ id_captain, id_serie }) => {
                 <BeatLoader />
               </div>
             ) : (
-              <Button>✅ Enviar encuesta</Button>
+              <button className='btn-2 w-full font-medium'>Enviar encuesta</button>
             )
           ) : null}
-
-          <Link
-            className='btn-2 shadow-lg w-full max-w-md'
-            to='/home'
-          >
-            👈 Volver
-          </Link>
         </div>
       </form>
       <Toaster />

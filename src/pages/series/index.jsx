@@ -89,20 +89,14 @@ const index = () => {
 
       <div className='flex flex-col gap-y-3 justify-center'>
         <Aviso
-          text='¡Completá la encuesta de cada serie! 😉'
+          text='¡Completá la encuesta de esta serie! Tu opinión nos interesa.'
           alert={true}
         />
         <Link
-          className='btn-2'
+          className='btn-2 font-medium'
           to={`/encuestas/${id}`}
         >
-          📝 Encuesta
-        </Link>
-        <Link
-          className='btn-2'
-          to='/home'
-        >
-          👈 Volver
+          Encuesta
         </Link>
       </div>
     </section>
