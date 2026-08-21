@@ -202,7 +202,7 @@ const Index = () => {
           className='w-full border-none bg-white/5 h-12 rounded-lg hover:bg-white/10 transition-all font-medium'
           onClick={handleTestFormation}
         >
-          Testear formación 💪🏻
+          Testear formación 🔥
         </button>
       </div>
 
