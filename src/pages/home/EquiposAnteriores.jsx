@@ -15,7 +15,7 @@ const CapitanEquiposAnteriores = ({ id }) => {
       <section className='fade-in flex flex-col gap-y-3'>
         <h1 className='font-semibold text-primary'>{'Equipos anteriores (' + dataFiltered.length + ')'}</h1>
 
-        <div className='bg-black/15 px-4 py-4 md:px-6 rounded-xl shadow-lg'>
+        <div className='bg-black/15 p-6 rounded-xl shadow-lg'>
           <div className='flex flex-col text-sm overflow-x-auto pb-2'>
             {dataFiltered.map((item, index) => (
               <div
@@ -23,7 +23,7 @@ const CapitanEquiposAnteriores = ({ id }) => {
                 className='py-2'
               >
                 <Item
-                  title={item.name + ' ' + item.tournament_name}
+                  title={item.name + ' — ' + item.tournament_name}
                   image={item.image}
                   link=''
                 />

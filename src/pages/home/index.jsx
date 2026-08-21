@@ -5,6 +5,7 @@ import EquiposAnteriores from './EquiposAnteriores'
 import { useAuth } from '../../context'
 import Header from '../../components/Header'
 import SeriesMain from './SeriesMain'
+import Menu from './Menu'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -28,6 +29,7 @@ const Home = () => {
         </div>
 
         <SeriesMain id={userData.id} />
+        <Menu />
         <Equipos id={userData.id} />
         <EquiposAnteriores id={userData.id} />
       </section>

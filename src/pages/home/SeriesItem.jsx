@@ -5,23 +5,29 @@ const Fixture = ({ data }) => {
   return data.map(item => (
     <div
       key={item.id}
-      className='flex flex-col gap-y-4 text-base bg-black/15 px-4 py-4 md:px-6 rounded-2xl whitespace-nowrap overflow-x-auto mb-2 shadow-lg'
+      className='flex flex-col gap-y-4 text-base bg-black/15 p-6   rounded-2xl whitespace-nowrap overflow-x-auto mb-2 shadow-lg'
     >
-      <div className='flex items-center gap-x-2 whitespace-nowrap font-medium '>
-        <span className='text-primary'>
-          {item.date} {item.hour !== '-' ? `${item.hour}` : ''}
-        </span>
-        <Item
-          title={item.home_name}
-          image={item.home_image}
-        />
-        ⚡️
-        <Item
-          title={item.away_name}
-          image={item.away_image}
-        />
-        <span className='text-primary'>{item.tournament_name}</span>
-        <span className='pr-4 text-secondary'>#{item.id}</span>
+      <div className='flex flex-col font-medium gap-3'>
+        <div className='text-secondary'>
+          <span className='text-primary'>
+            {item.date} {item.hour !== '-' ? `${item.hour}` : ''}
+          </span>
+          <span> </span>
+          <span>{item.tournament_name}</span>
+          <span> — </span>
+          <span>#{item.id}</span>
+        </div>
+        <div className='flex items-center gap-x-2 whitespace-nowrap'>
+          <Item
+            title={item.home_name}
+            image={item.home_image}
+          />
+          ⚡️
+          <Item
+            title={item.away_name}
+            image={item.away_image}
+          />
+        </div>
       </div>
       <div>
         <div className='flex items-center gap-x-2'>

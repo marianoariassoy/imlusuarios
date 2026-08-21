@@ -9,6 +9,8 @@ import RecuperarPassword from './pages/recuperar-password'
 import RestablecerPassword from './pages/recuperar-password/RestablecerPassword'
 import PageNotFound from './pages/PageNotFound'
 
+import TestFormacion from './pages/test-formacion'
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -45,6 +47,10 @@ const App = () => {
           <Route
             path='/restablecer-password'
             element={<RestablecerPassword />}
+          />
+          <Route
+            path='/test-formacion'
+            element={<TestFormacion />}
           />
           <Route
             path='*'
