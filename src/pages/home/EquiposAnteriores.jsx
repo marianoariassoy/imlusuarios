@@ -12,10 +12,10 @@ const CapitanEquiposAnteriores = ({ id }) => {
 
   if (dataFiltered.length > 0)
     return (
-      <section className='fade-in flex flex-col gap-y-3'>
+      <section className='fade-in flex flex-col gap-y-4'>
         <h1 className='font-semibold text-primary'>{'Equipos anteriores (' + dataFiltered.length + ')'}</h1>
 
-        <div className='bg-black/15 p-6 rounded-xl shadow-lg'>
+        <div className='bg-white/5 p-6 rounded-xl'>
           <div className='flex flex-col text-sm overflow-x-auto pb-2'>
             {dataFiltered.map((item, index) => (
               <div

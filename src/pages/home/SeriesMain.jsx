@@ -9,7 +9,7 @@ const SeriesPorCargar = ({ id }) => {
   if (!data) return null
 
   return (
-    <section className='fade-in flex flex-col gap-y-3'>
+    <section className='fade-in flex flex-col gap-y-4'>
       <h1 className='font-semibold text-primary'>{'Próximas series (' + data.length + ')'}</h1>
 
       <Series data={data} />

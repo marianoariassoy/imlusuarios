@@ -2,7 +2,7 @@ import useFetch from '../../hooks/useFetch'
 import Loader from '../../components/Loader'
 import Messages from '../../components/Messages'
 
-const Equipos = ({ idCaptain, idEquipo, setIdEquipo }) => {
+const Equipos = ({ idCaptain, team, setTeam }) => {
   const { data, loading } = useFetch(`/captain/${idCaptain}/teams`)
   if (loading) return <Loader />
   if (data === null) return <Messages text='🥲 Ocurrió un error' />
@@ -10,16 +10,17 @@ const Equipos = ({ idCaptain, idEquipo, setIdEquipo }) => {
   return (
     <select
       className='select select-bordered border-primary w-full text-base text-primary'
-      defaultValue='0'
-      value={idEquipo}
-      onChange={e => setIdEquipo(e.target.value)}
+      value={team.id || ''}
+      onChange={e => {
+        const selectedTeam = data.find(item => item.id == e.target.value)
+
+        setTeam({
+          id: selectedTeam.id,
+          tournament_type: selectedTeam.tournament_type
+        })
+      }}
     >
-      <option
-        value='0'
-        disabled
-      >
-        Selecciona un equipo
-      </option>
+      <option disabled>Selecciona un equipo</option>
       {data.map((item, index) => {
         return (
           <option

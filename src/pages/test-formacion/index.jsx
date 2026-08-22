@@ -7,12 +7,16 @@ import { useAuth } from '../../context'
 import Messages from '../../components/Messages'
 import { Alert } from '../../lib/icons'
 import Aviso from '../../components/Aviso'
+import Confetti from '../../components/Confetti'
 
 const Index = () => {
   const { userData, isLoggedIn } = useAuth()
   const idCaptain = userData?.id
 
-  const [idEquipo, setIdEquipo] = useState(null)
+  const [team, setTeam] = useState({
+    id: null,
+    tournament_type: 1
+  })
   const [players, setPlayers] = useState([])
 
   const [formation, setFormation] = useState({
@@ -28,7 +32,7 @@ const Index = () => {
   useEffect(() => {
     const getPlayers = async () => {
       try {
-        const response = await axios.get(`https://api.imltenis.com.ar/captain/${idCaptain}/teams/${idEquipo}/players`)
+        const response = await axios.get(`https://api.imltenis.com.ar/captain/${idCaptain}/teams/${team.id}/players`)
 
         setPlayers(response.data)
 
@@ -40,22 +44,22 @@ const Index = () => {
           S1P1: null
         })
 
-        setFormationMessage('Selecciona todos los jugadores')
+        setFormationMessage(null)
       } catch (error) {
         console.log(error)
       }
     }
 
-    if (idCaptain && idEquipo) {
+    if (idCaptain && team.id) {
       getPlayers()
     }
-  }, [idCaptain, idEquipo])
+  }, [idCaptain, team.id])
 
   if (!isLoggedIn) {
     return <Messages text='🥲 Debes estar logeado para ver este contenido' />
   }
 
-  const matches = [
+  const matchesMode1 = [
     {
       name: 'Doble 1',
       type: 'D1',
@@ -73,6 +77,19 @@ const Index = () => {
     }
   ]
 
+  const matchesMode3 = [
+    {
+      name: 'Doble 1',
+      type: 'D1',
+      double: true
+    },
+    {
+      name: 'Doble 2',
+      type: 'D2',
+      double: true
+    }
+  ]
+
   const handleFormationChange = (position, playerId) => {
     const player = players.find(player => String(player.id) === String(playerId))
 
@@ -80,8 +97,6 @@ const Index = () => {
       ...prev,
       [position]: player || null
     }))
-
-    setFormationMessage('Selecciona a todos los jugadores')
   }
 
   const getAvailablePlayers = position => {
@@ -97,13 +112,13 @@ const Index = () => {
   }
 
   const handleTestFormation = () => {
-    console.log('handle test formation')
-    const positions = ['D1P1', 'D1P2', 'D2P1', 'D2P2']
+    const positions =
+      team.tournament_type === 1 ? ['D1P1', 'D1P2', 'D2P1', 'D2P2', 'S1P1'] : ['D1P1', 'D1P2', 'D2P1', 'D2P2']
 
     const allPlayersSelected = positions.every(position => formation[position])
 
     if (!allPlayersSelected) {
-      setFormationMessage('Selecciona a todos los jugadores')
+      setFormationMessage('⚠️ Te falta seleccionar jugadores')
       return
     }
 
@@ -124,8 +139,12 @@ const Index = () => {
     setFormationMessage('💪🏻 La formación es correcta.')
   }
 
+  const matches = Number(team.tournament_type) === 1 ? matchesMode1 : matchesMode3
+
   return (
     <section className='fade-in flex flex-col gap-y-6 max-w-2xl mx-auto'>
+      {formationMessage === '💪🏻 La formación es correcta.' && <Confetti />}
+
       <Header
         title='Test de formación'
         emoji='👮🏻‍♂️'
@@ -133,8 +152,8 @@ const Index = () => {
 
       <Equipos
         idCaptain={idCaptain}
-        idEquipo={idEquipo}
-        setIdEquipo={setIdEquipo}
+        team={team}
+        setTeam={setTeam}
       />
 
       <div className='flex flex-col gap-y-4 my-4'>
