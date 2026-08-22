@@ -122,7 +122,7 @@ const Index = () => {
       return
     }
 
-    const selectedPlayers = positions.map(position => formation[position])
+    const selectedPlayers = positions.filter(position => position !== 'S1P1').map(position => formation[position])
 
     const bestPlayer = selectedPlayers.reduce((best, player) => {
       return Number(player.pos) < Number(best.pos) ? player : best
@@ -214,7 +214,9 @@ const Index = () => {
         })}
       </div>
 
-      {formationMessage && <div className='text-secondary font-medium text-center text-base'>{formationMessage}</div>}
+      {formationMessage && (
+        <div className='text-secondary font-medium text-center text-base -mt-4'>{formationMessage}</div>
+      )}
 
       <div>
         <button

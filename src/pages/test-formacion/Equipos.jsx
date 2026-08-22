@@ -9,7 +9,7 @@ const Equipos = ({ idCaptain, team, setTeam }) => {
 
   return (
     <select
-      className='select select-bordered border-primary w-full text-base text-primary'
+      className='select select-bordered border-primary w-full text-base'
       value={team.id || ''}
       onChange={e => {
         const selectedTeam = data.find(item => item.id == e.target.value)
