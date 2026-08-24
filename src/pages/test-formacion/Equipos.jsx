@@ -20,7 +20,12 @@ const Equipos = ({ idCaptain, team, setTeam }) => {
         })
       }}
     >
-      <option disabled>Selecciona un equipo</option>
+      <option
+        disabled
+        value=''
+      >
+        Selecciona un equipo
+      </option>
       {data.map((item, index) => {
         return (
           <option
