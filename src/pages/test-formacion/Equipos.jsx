@@ -24,7 +24,7 @@ const Equipos = ({ idCaptain, team, setTeam }) => {
         disabled
         value=''
       >
-        Selecciona un equipo
+        Seleccioná un equipo
       </option>
       {data.map((item, index) => {
         return (
