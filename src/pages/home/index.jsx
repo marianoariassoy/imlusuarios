@@ -17,7 +17,7 @@ const Home = () => {
 
   if (isLoggedIn)
     return (
-      <section className='fade-in flex flex-col gap-y-6'>
+      <section className='fade-in flex flex-col gap-y-4'>
         <div>
           <Header
             title='IML Capitanes'

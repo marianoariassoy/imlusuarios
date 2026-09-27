@@ -4,7 +4,7 @@ const TitleRow = ({ image, title }) => {
   return (
     <div className='flex items-center gap-x-2 text-base'>
       <div className='avatar'>
-        <div className='w-12 rounded-full'>
+        <div className='w-9 rounded-full'>
           <Image
             src={image}
             alt={title}

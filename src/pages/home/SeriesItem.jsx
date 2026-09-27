@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
 import Item from '../../components/ItemSmall'
+import { WhatsApp } from '../../lib/icons'
 
 const Fixture = ({ data }) => {
   return data.map(item => (
     <div
       key={item.id}
-      className='flex flex-col gap-y-4 text-base bg-black/15 p-6   rounded-2xl whitespace-nowrap overflow-x-auto mb-2 shadow-lg'
+      className='flex flex-col gap-y-4 text-base bg-black/15 p-6   rounded-2xl whitespace-nowrap overflow-x-auto mb-2'
     >
       <div className='flex flex-col font-medium gap-3'>
         <div className='text-secondary'>
@@ -33,7 +34,7 @@ const Fixture = ({ data }) => {
         <div className='flex items-center gap-x-2'>
           <Link
             to={`/series/${item.id}`}
-            className='btn-2'
+            className='btn-2 '
           >
             Resultados
           </Link>
@@ -44,6 +45,18 @@ const Fixture = ({ data }) => {
           >
             Encuesta
           </Link>
+
+          <a
+            href={item.opponent_captain_phone}
+            className='btn-2 flex items-center gap-x-2'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <span className='text-lg'>
+              <WhatsApp />
+            </span>
+            {item.opponent_captain_name}
+          </a>
         </div>
       </div>
     </div>
