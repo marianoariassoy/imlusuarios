@@ -54,7 +54,7 @@ const Serie = ({ serie, match }) => {
     }
   }
 
-  const double = match.type_id === 1 || match.type_id === 5
+  const double = match.type_id === 1 || match.type_id === 2 || match.type_id === 5
 
   return (
     <div className={sended ? 'opacity-50' : ''}>
